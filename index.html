@@ -4,29 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
+<body class="vh-100">
+    <header style="height: 5%;">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1 p-2 fs-2">Inspire</span>
+            </div>
+          </nav>
+    </header>
+    <main style="height: 85%;">
+        <div class="container-fluid d-flex m-0 p-0 h-100">
+            <div class= "col-md-7 m-4 p-2 border border-2 border-primary">
+                Calendar
+            </div>
+            <div class="col-md-4 m-4 ">
+                <div class= "p-2 text-center h-25">
+                    Quote Box
+                </div>
+                <div class= "p-2 border border-2 border-warning h-75">
+                    Aside box
+                </div>
+            </div> 
+        </div>
+        <div class="border border-2 border-danger m-4" style="height: 8%;">Legend</div>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
 
-<!-- Header including nav bar and title -->
-<header>
-
-</header>
-
-<!-- Main calendar section -->
-<main>
-
-
-</main>
-
-<!-- Sidebar with inspirational quote and events for specific day -->
-<aside>
-
-</aside>
-
-<!-- Color key for events -->
 <footer>
 
 </footer>
-<script src="./assets/js/script.js"></script>
+
 
 </html>
