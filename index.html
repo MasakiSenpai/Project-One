@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 <body class="vh-100">
-    <header style="height: 5%;">
-        <nav class="navbar navbar-light bg-light">
+    <header id="header" style="height: 5%;">
+        <nav id="navbar" class="navbar navbar-light bg-light">
             <div class="container-fluid">
               <span class="navbar-brand mb-0 h1 p-2 fs-2">Inspire</span>
             </div>
@@ -18,10 +18,10 @@
     </header>
     <main style="height: 85%;">
         <div class="container-fluid d-flex m-0 p-0 h-100">
-            <div class= "col-md-7 m-4 p-2 border border-2 border-primary">
-                <h3 class = "text-center" style = "height: 3%">Months</h3>
+            <div id="calendar-container" class= "col-md-7 m-4 p-2 border border-2 border-primary">
+                <h3 id="month" class = "text-center" style = "height: 3%">Months</h3>
               
-                <ul class = "list-unstyled d-flex justify-content-between" style = "height: 3%">
+                <ul id="day-names" class = "list-unstyled d-flex justify-content-between" style = "height: 3%">
                     <li>Sunday</li>
                     <li>Monday</li>
                     <li>Tuesday</li>
@@ -31,8 +31,8 @@
                     <li>Saturday</li>
                     
                 </ul>
-                <div style = "height: 94%">
-                    <div class = "row" style = "height: 20%">
+                <div id="day-row-container" style = "height: 94%">
+                    <div id="day-row-1" class = "row" style = "height: 20%">
                         <button class = "col h-100"></button>
                         <button class = "col"></button>
                         <button class = "col"></button>
@@ -41,7 +41,7 @@
                         <button class = "col"></button>
                         <button class = "col"></button>
                     </div>
-                    <div class = "row" style = "height: 20%">
+                    <div id="day-row-2" class = "row" style = "height: 20%">
                         <button class = "col h-100"></button>
                         <button class = "col"></button>
                         <button class = "col"></button>
@@ -50,7 +50,7 @@
                         <button class = "col"></button>
                         <button class = "col"></button>
                     </div>
-                    <div class = "row" style = "height: 20%">
+                    <div id="day-row-3" class = "row" style = "height: 20%">
                         <button class = "col h-100"></button>
                         <button class = "col"></button>
                         <button class = "col"></button>
@@ -59,7 +59,7 @@
                         <button class = "col"></button>
                         <button class = "col"></button>
                     </div>
-                    <div class = "row" style = "height: 20%">
+                    <div id="day-row-4" class = "row" style = "height: 20%">
                         <button class = "col h-100"></button>
                         <button class = "col"></button>
                         <button class = "col"></button>
@@ -68,7 +68,7 @@
                         <button class = "col"></button>
                         <button class = "col"></button>
                     </div>
-                    <div class = "row" style = "height: 20%">
+                    <div id="day-row-5" class = "row" style = "height: 20%">
                         <button class = "col h-100"></button>
                         <button class = "col"></button>
                         <button class = "col"></button>
@@ -82,16 +82,35 @@
             </div>
 
                   
-            <div class="col-md-4 m-4 ">
-                <div class= "p-2 text-center h-25">
+            <div id="side-container" class="col-md-4 m-4 ">
+                <div id="quote-box" class= "p-2 text-center h-25">
                     Quote Box
                 </div>
-                <div class= "p-2 border border-2 border-warning h-75">
-                    Aside box
+
+                <div id="notes" class= "d-flex flex-column flex-wrap fs-4 p-2 border border-2 border-warning h-75">
+                    <ul id="birthdays" class="list-unstyled">
+                        <h2>Birthdays</h2>
+                    </ul>
+                    <ul id="holidays" class="list-unstyled">
+                        <h2>Holidays</h2>
+                    </ul>
+                    <ul id="personal" class="list-unstyled">
+                        <h2>Personal</h2>
+                    </ul>
+                    <ul id="work" class="list-unstyled">
+                        <h2>Work</h2>
+                    </ul>
+                    <ul id="school" class="list-unstyled">
+                        <h2>School</h2>
+                    </ul>
+                    <ul id="other" class="list-unstyled">
+                        <h2>Other</h2>
+                    </ul>
                 </div>
+
             </div> 
         </div>
-        <div class="border border-2 border-danger m-4" style="height: 8%;">Legend</div>
+        <div id="legend" class="border border-2 border-danger m-4" style="height: 8%;">Legend</div>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>
