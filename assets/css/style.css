@@ -1,0 +1,28 @@
+nav {
+    font-family: 'Oleo Script', cursive;
+}
+#month {
+    font-family: 'Oleo Script', cursive;
+}
+
+#day-names {
+    font-family: 'Athiti', sans-serif;
+}
+
+#quote-box {
+    font-family: 'Athiti', sans-serif;
+}
+
+h2 {
+    font-family: 'Oleo Script', cursive;
+}
+
+#note-items {
+    font-family: 'Athiti', sans-serif;
+}
+
+#legend {
+    font-family: 'Athiti', sans-serif;
+    /* font-family: 'Oleo Script', cursive; */
+
+}
