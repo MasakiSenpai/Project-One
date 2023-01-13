@@ -9,6 +9,13 @@ nav {
     font-family: 'Athiti', sans-serif;
 }
 
+#day-row-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+}
+
 #quote-box {
     font-family: 'Athiti', sans-serif;
 }
