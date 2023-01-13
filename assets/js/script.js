@@ -10,6 +10,8 @@ function getQuote() {
             var quote = data.quote;
             var authorEl = document.createElement("p");
             var quoteEl = document.createElement("p");
+
+            
             authorEl.textContent = author;
             quoteEl.textContent = quote;
             quoteElement.appendChild(quoteEl);
