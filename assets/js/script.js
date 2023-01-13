@@ -1,5 +1,21 @@
 var quoteApi = "https://api.goprogram.ai/inspiration";
 var quoteElement = document.getElementById("quote-box");
+var calendarContainerEl = document.getElementById("calendar-container");
+var dayNamesEl = document.getElementById("day-names");
+var dayRowContainerEl = document.getElementById("day-row-container");
+var daysContainer = document.getElementById("days");
+
+
+var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
+var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
+
+var daysInPrevMonth = dayjs().startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
+
+var daysInNextMonth = dayjs().startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
+var nextMonthFirstDay = dayjs().startOf('month').add(1, 'month').get('d'); //returns day of week as index
+
+console.log(nextMonthFirstDay)
+
 function getQuote() {
     fetch(quoteApi)
         .then(function (response) {
@@ -10,10 +26,41 @@ function getQuote() {
             var quote = data.quote;
             var authorEl = document.createElement("p");
             var quoteEl = document.createElement("p");
+
+
             authorEl.textContent = author;
             quoteEl.textContent = quote;
             quoteElement.appendChild(quoteEl);
             quoteElement.appendChild(authorEl);
         })
 }
+
+// makes elements based on the number of days in the current month
+function makeDays() {
+    // make days of previous month
+    for (var x = currentMonthFirstDay; x > 0; x--) {
+        var button = document.createElement('button');
+        button.setAttribute('class', 'text-secondary');
+        var day = (daysInPrevMonth - x);
+        button.textContent = day;
+        dayRowContainerEl.appendChild(button);
+    }
+
+    // make days of current month
+    for (var y = 0; y < daysInCurrentMonth; y++) {
+        var button = document.createElement('button');
+        button.textContent = y + 1;
+        dayRowContainerEl.appendChild(button);
+    }
+
+    // make days of next month
+    for (var z = 1; z <= 7- nextMonthFirstDay; z++) {
+        var button = document.createElement('button');
+        button.setAttribute('class', 'text-secondary');
+        button.textContent = z;
+        dayRowContainerEl.appendChild(button);
+    }
+}
+
 getQuote();
+makeDays();
