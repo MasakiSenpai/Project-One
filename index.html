@@ -7,6 +7,7 @@
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a06045c397.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Athiti&family=Oleo+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
@@ -93,30 +94,40 @@
                 </div>
 
                 <div id="notes" class="d-flex flex-column flex-wrap fs-4 p-2 border border-2 border-warning h-75">
-                    <ul id="birthdays" class="list-unstyled">
-                        <h2>Birthdays</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="birthdays">Birthdays</h2>
                         <li id="note-items">Hello</li>
                     </ul>
-                    <ul id="holidays" class="list-unstyled">
-                        <h2>Holidays</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="holidays">Holidays</h2>
                     </ul>
-                    <ul id="personal" class="list-unstyled">
-                        <h2>Personal</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="personal">Personal</h2>
                     </ul>
-                    <ul id="work" class="list-unstyled">
-                        <h2>Work</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="work">Work</h2>
                     </ul>
-                    <ul id="school" class="list-unstyled">
-                        <h2>School</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="school">School</h2>
                     </ul>
-                    <ul id="other" class="list-unstyled">
-                        <h2>Other</h2>
+                    <ul class="list-unstyled">
+                        <h2 id="other">Other</h2>
                     </ul>
                 </div>
 
             </div>
         </div>
-        <div id="legend" class="border border-2 border-danger m-4 fs-3" style="height: 8%;">Legend</div>
+        <div id="legend" class="m-4 fs-3" style="height: 8%;">
+
+            <ul class="list-unstyled d-flex justify-content-around ">
+                <li><i class="fa-solid fa-circle" id = "birthdays"></i> Birthdays</li>
+                <li><i class="fa-solid fa-circle" id = "holidays"></i> Holidays</li>
+                <li><i class="fa-solid fa-circle" id = "personal"></i> Personal</li>
+                <li><i class="fa-solid fa-circle" id = "work"></i> Work</li>
+                <li><i class="fa-solid fa-circle" id = "school"></i> School</li>
+                <li><i class="fa-solid fa-circle" id = "other"></i> Other</li>
+            </ul>
+        </div>
     </main>
     <script src="./assets/js/script.js"></script>
 </body>

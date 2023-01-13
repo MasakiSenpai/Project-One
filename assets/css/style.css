@@ -40,3 +40,27 @@ h2 {
     /* font-family: 'Oleo Script', cursive; */
 
 }
+
+#holidays {
+    color: #99b898;
+}
+
+#birthdays {
+    color: #f8b195
+}
+
+#work {
+    color: #457892
+}
+
+#school {
+    color: #f7aa00;
+}
+
+#personal {
+    color: #7a42ac
+}
+
+#other {
+    color: #a70013; 
+}
