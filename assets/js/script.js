@@ -5,6 +5,8 @@ var dayNamesEl = document.getElementById("day-names");
 var dayRowContainerEl = document.getElementById("day-row-container");
 var daysContainer = document.getElementById("days");
 
+var daysInMonth = dayjs().daysInMonth()
+
 function getQuote() {
     fetch(quoteApi)
         .then(function (response) {
@@ -25,7 +27,7 @@ function getQuote() {
 }
 
 function makeDays() {
-    for (var i = 0; i < 31; i++) {
+    for (var i = 0; i < daysInMonth; i++) {
         var button = document.createElement('button')
         button.setAttribute('id', 'day-button');
         // button.setAttribute('class', 'col p-5');
@@ -37,6 +39,46 @@ function makeDays() {
 }
 
 function displayMonth() {
+    var dayString = dayjs('2023-09-01').format('dddd MMMM M YYYY').toString()
+    daySplit = dayString.split(' ')
+    console.log(daySplit[0]);
+
+    if (daySplit[0] == 'Sunday') {
+        makeDays()
+        return;
+    } else if (daySplit[0] == 'Monday') {
+        for (var i = 0; i < 1; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    } else if (daySplit[0] == 'Tuesday') {
+        for (var i = 0; i < 2; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    } else if (daySplit[0] == 'Wednesday') {
+        for (var i = 0; i < 3; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    } else if (daySplit[0] == 'Thursday') {
+        for (var i = 0; i < 4; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    } else if (daySplit[0] == 'Friday') {
+        for (var i = 0; i < 5; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    } else {
+        for (var i = 0; i < 6; i++) {
+            var button = document.createElement('button');
+            dayRowContainerEl.appendChild(button);
+        }
+    }
+    
+    makeDays();
 
 }
 
@@ -67,4 +109,4 @@ function displayMonth() {
 // }
 // getQuote();
 // getRows();
-makeDays();
+displayMonth();
