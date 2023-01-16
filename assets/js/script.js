@@ -82,7 +82,12 @@ function showPosition(position) {
 }
   
 function getWeather(lat, long) {
-    
+   var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=1ff1b9e8930bbe84b844222ea3d5a398&units=imperial'
+    fetch(url).then(function(response){
+        return response.json()
+    }).then(function(data){
+        console.log(data);
+    })
 }
 
 getQuote();
