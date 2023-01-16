@@ -44,7 +44,11 @@ function makeDays() {
     for (var x = currentMonthFirstDay; x > 0; x--) {
         var button = document.createElement('button');
         button.setAttribute('class', 'text-secondary');
+        var year = dayjs().subtract(1, "month").format("YYYY");
+        var month = dayjs().subtract(1, "month").format("MM");
         var day = (daysInPrevMonth - x);
+        var date = year + "-" + month + "-" + day;
+        button.setAttribute("data-date", date);
         button.textContent = day;
         dayRowContainerEl.appendChild(button);
     }
@@ -52,15 +56,26 @@ function makeDays() {
     // make days of current month
     for (var y = 0; y < daysInCurrentMonth; y++) {
         var button = document.createElement('button');
+        var year = dayjs().format("YYYY");
+        var month = dayjs().format("MM");
+        var day = y + 1;
+        var dayString = "0" + day.toString();
+        var date = year + "-" + month + "-" + dayString.slice(-2);
+        button.setAttribute("data-date", date);
         button.textContent = y + 1;
         dayRowContainerEl.appendChild(button);
     }
 
     // make days of next month
-    for (var z = 1; z <= 7- nextMonthFirstDay; z++) {
+    for (var z = 1; z <= 7 - nextMonthFirstDay; z++) {
         var button = document.createElement('button');
+        var year = dayjs().add(1, "month").format("YYYY");
+        var month = dayjs().add(1, "month").format("MM");
         button.setAttribute('class', 'text-secondary');
         button.textContent = z;
+        var dayString = "0" + z.toString();
+        var date = year + "-" + month + "-" + dayString.slice(-2);
+        button.setAttribute("data-date", date);
         dayRowContainerEl.appendChild(button);
     }
 }
@@ -68,34 +83,34 @@ function makeDays() {
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
+    } else {
         console.log("Geolocation is not supported by this browser.");
-      }
+    }
 }
 
 function showPosition(position) {
     console.log("Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude);
+        " Longitude: " + position.coords.longitude);
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     getWeather(lat, long);
 }
-  
+
 function getWeather(lat, long) {
-   var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=1ff1b9e8930bbe84b844222ea3d5a398&units=imperial'
-    fetch(url).then(function(response){
+    var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=1ff1b9e8930bbe84b844222ea3d5a398&units=imperial'
+    fetch(url).then(function (response) {
         return response.json()
-    }).then(function(data){
+    }).then(function (data) {
         console.log(data);
         var location = data.name;
         var high = data.main.temp_max;
-        var low =  data.main.temp_min;
+        var low = data.main.temp_min;
         var icon = data.weather[0].icon;
         // console.log(icon);
         var navWeather = document.createElement('div');
         navWeather.textContent = location + ' ' + high + '°F' + ' / ' + low + '°F';
         var img = document.createElement('img');
-        img.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon +'@2x.png')
+        img.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon + '@2x.png')
         // img.setAttribute('src', 'http://openweathermap.org/img/wn/02d@2x.png')
         img.setAttribute('style', 'width: 20%')
         navText.appendChild(navWeather);
@@ -107,3 +122,29 @@ function getWeather(lat, long) {
 getQuote();
 makeDays();
 getLocation();
+
+function addEventPopup(event) {
+    var date = event.target.getAttribute("data-date");
+    console.log(date);
+    document.getElementById("startDate").removeAttribute("value");
+    document.getElementById("startDate").setAttribute("value", date);
+    var showPopup = document.getElementById("addEvent");
+    if (showPopup.style.visibility == 'hidden') {
+        showPopup.style.visibility = 'visible';
+    } else {
+        showPopup.style.visibility = 'hidden';
+    }
+
+}
+
+function cancelEvent() {
+    var hidePopup = document.getElementById("addEvent");
+    hidePopup.style.visibility = 'hidden';
+
+}
+
+function createEvent() {
+
+}
+
+dayRowContainerEl.addEventListener("dblclick", addEventPopup);

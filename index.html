@@ -36,7 +36,7 @@
                     <li>Friday</li>
                     <li>Saturday</li>
                 </ul>
-                
+
                 <div id="day-row-container" class="six-rows" style="height: 92%">
 
                 </div>
@@ -70,16 +70,50 @@
                 </div>
 
             </div>
+            <div class="eventPopup" id="addEvent" style="visibility:hidden">
+                <form>
+                    <h1>Add New Event</h1>
+                    <label for="eventTitle">Title: </label><br>
+                    <input type="text" id="eventTitle" name="eventTitle" required><br>
+                    <div>
+                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday">
+                        <label for="chooseBirthday">Birthday</label><br>
+
+                        <input type="radio" id="chooseHoliday" name="categoryChoice" value="Holiday">
+                        <label for="chooseHoliday">Holiday</label><br>
+
+                        <input type="radio" id="choosePersonal" name="categoryChoice" value="Personal">
+                        <label for="choosePersonal">Personal</label><br>
+
+                        <input type="radio" id="chooseWork" name="categoryChoice" value="Work">
+                        <label for="chooseWork">Work</label><br>
+
+                        <input type="radio" id="chooseSchool" name="categoryChoice" value="School">
+                        <label for="chooseSchool">School</label><br>
+
+                        <input type="radio" id="chooseOther" name="categoryChoice" value="Other">
+                        <label for="chooseOther">Other</label><br>
+                    </div>
+                    <label for="start">Start date: </label>
+                    <input type="date" id="startDate" name="eventStart" required>
+
+                    <label for="end">End date: </label>
+                    <input type="date" id="endDate" name="eventEnd"><br>
+
+                    <button type="submit" class="createEvent" onclick="createEvent()">Create</button>
+                    <button type="button" class="cancelEvent" onclick="cancelEvent()">Cancel</button>
+                </form>
+            </div>
         </div>
         <div id="legend" class="m-4 fs-3" style="height: 8%;">
 
             <ul class="list-unstyled d-flex justify-content-around ">
-                <li><i class="fa-solid fa-circle" id = "birthdays"></i> Birthdays</li>
-                <li><i class="fa-solid fa-circle" id = "holidays"></i> Holidays</li>
-                <li><i class="fa-solid fa-circle" id = "personal"></i> Personal</li>
-                <li><i class="fa-solid fa-circle" id = "work"></i> Work</li>
-                <li><i class="fa-solid fa-circle" id = "school"></i> School</li>
-                <li><i class="fa-solid fa-circle" id = "other"></i> Other</li>
+                <li><i class="fa-solid fa-circle" id="birthdays"></i> Birthdays</li>
+                <li><i class="fa-solid fa-circle" id="holidays"></i> Holidays</li>
+                <li><i class="fa-solid fa-circle" id="personal"></i> Personal</li>
+                <li><i class="fa-solid fa-circle" id="work"></i> Work</li>
+                <li><i class="fa-solid fa-circle" id="school"></i> School</li>
+                <li><i class="fa-solid fa-circle" id="other"></i> Other</li>
             </ul>
         </div>
     </main>
