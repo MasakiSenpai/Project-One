@@ -1,6 +1,7 @@
 nav {
     font-family: 'Oleo Script', cursive;
 }
+
 #month {
     font-family: 'Oleo Script', cursive;
 }
@@ -55,5 +56,13 @@ h2 {
 }
 
 #other {
-    color: #a70013; 
+    color: #a70013;
+}
+
+.eventPopup {
+    position: fixed;
+    background-color: white;
+    border: 3px solid black;
+    margin: 60px;
+    width: 50%;
 }
