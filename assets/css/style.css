@@ -1,13 +1,38 @@
+:root {
+    --Athiti: 'Athiti', sans-serif;
+    --Oleo: 'Oleo Script', cursive;
+    --holidays: #99b898;
+    --birthdays: #f8b195;
+    --personal: #7a42ac;
+    --work: #457892;
+    --school: #f7aa00;
+    --other: #a70013;
+    --maybe: #5c5470;
+    --dark: #48484a;
+}
+
 nav {
-    font-family: 'Oleo Script', cursive;
+    font-family: var(--Oleo);
+}
+
+body {
+    background-color: var(--dark);
+}
+
+/* #calendar-container {
+    padding-top: 10px;
+} */
+
+#hungry {
+    
 }
 
 #month {
-    font-family: 'Oleo Script', cursive;
+    font-family: var(--Oleo);
 }
 
 #day-names {
-    font-family: 'Athiti', sans-serif;
+    font-family: var(--Athiti);
 }
 
 .six-rows {
@@ -18,45 +43,45 @@ nav {
 }
 
 #quote-box {
-    font-family: 'Athiti', sans-serif;
+    font-family: var(--Athiti);
 }
 
 h2 {
-    font-family: 'Oleo Script', cursive;
+    font-family: var(--Oleo);
 }
 
 #note-items {
-    font-family: 'Athiti', sans-serif;
+    font-family: var(--Athiti);
 }
 
 #legend {
-    font-family: 'Athiti', sans-serif;
+    font-family: var(--Athiti);
     /* font-family: 'Oleo Script', cursive; */
 
 }
 
 #holidays {
-    color: #99b898;
+    color: var(--holidays);
 }
 
 #birthdays {
-    color: #f8b195
-}
-
-#work {
-    color: #457892
-}
-
-#school {
-    color: #f7aa00;
+    color: var(--birthdays);
 }
 
 #personal {
-    color: #7a42ac
+    color: var(--personal)
+}
+
+#work {
+    color: var(--work)
+}
+
+#school {
+    color: var(--school)
 }
 
 #other {
-    color: #a70013;
+    color: var(--other)
 }
 
 .eventPopup {
