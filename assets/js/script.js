@@ -4,8 +4,8 @@ var calendarContainerEl = document.getElementById("calendar-container");
 var dayNamesEl = document.getElementById("day-names");
 var dayRowContainerEl = document.getElementById("day-row-container");
 var daysContainer = document.getElementById("days");
-
-
+var currentMonth = document.getElementById('month')
+var navText = document.getElementById('navText');
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
 
@@ -14,7 +14,7 @@ var daysInPrevMonth = dayjs().startOf('month').subtract(1, 'month').daysInMonth(
 var daysInNextMonth = dayjs().startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
 var nextMonthFirstDay = dayjs().startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
-console.log(nextMonthFirstDay)
+// console.log(nextMonthFirstDay)
 
 function getQuote() {
     fetch(quoteApi)
@@ -37,6 +37,9 @@ function getQuote() {
 
 // makes elements based on the number of days in the current month
 function makeDays() {
+    // dipslays current month
+    currentMonth.textContent = dayjs().format('MMMM');
+
     // make days of previous month
     for (var x = currentMonthFirstDay; x > 0; x--) {
         var button = document.createElement('button');
@@ -62,5 +65,45 @@ function makeDays() {
     }
 }
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+}
+
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude);
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    getWeather(lat, long);
+}
+  
+function getWeather(lat, long) {
+   var url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + lat + '&lon=' + long + '&appid=1ff1b9e8930bbe84b844222ea3d5a398&units=imperial'
+    fetch(url).then(function(response){
+        return response.json()
+    }).then(function(data){
+        console.log(data);
+        var location = data.name;
+        var high = data.main.temp_max;
+        var low =  data.main.temp_min;
+        var icon = data.weather[0].icon;
+        // console.log(icon);
+        var navWeather = document.createElement('div');
+        navWeather.textContent = location + ' ' + high + '°F' + ' / ' + low + '°F';
+        var img = document.createElement('img');
+        img.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon +'@2x.png')
+        // img.setAttribute('src', 'http://openweathermap.org/img/wn/02d@2x.png')
+        img.setAttribute('style', 'width: 20%')
+        navText.appendChild(navWeather);
+        navText.appendChild(img);
+
+    })
+}
+
 getQuote();
 makeDays();
+getLocation();
