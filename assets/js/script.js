@@ -5,7 +5,7 @@ var dayNamesEl = document.getElementById("day-names");
 var dayRowContainerEl = document.getElementById("day-row-container");
 var daysContainer = document.getElementById("days");
 var currentMonth = document.getElementById('month')
-
+var navText = document.getElementById('navText');
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
 
@@ -87,6 +87,12 @@ function getWeather(lat, long) {
         return response.json()
     }).then(function(data){
         console.log(data);
+        var location = data.name;
+        var high = data.main.temp_max;
+        var low =  data.main.temp_min;
+        var navWeather = document.createElement('div');
+        navWeather.textContent = location +' ' + high + ' / ' + low;
+        navText.appendChild(navWeather);
     })
 }
 
