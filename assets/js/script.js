@@ -90,9 +90,17 @@ function getWeather(lat, long) {
         var location = data.name;
         var high = data.main.temp_max;
         var low =  data.main.temp_min;
+        var icon = data.weather[0].icon;
+        // console.log(icon);
         var navWeather = document.createElement('div');
-        navWeather.textContent = location +' ' + high + ' / ' + low;
+        navWeather.textContent = location + ' ' + high + '°F' + ' / ' + low + '°F';
+        var img = document.createElement('img');
+        img.setAttribute('src', 'http://openweathermap.org/img/wn/' + icon +'@2x.png')
+        // img.setAttribute('src', 'http://openweathermap.org/img/wn/02d@2x.png')
+        img.setAttribute('style', 'width: 20%')
         navText.appendChild(navWeather);
+        navText.appendChild(img);
+
     })
 }
 
