@@ -4,7 +4,7 @@ var calendarContainerEl = document.getElementById("calendar-container");
 var dayNamesEl = document.getElementById("day-names");
 var dayRowContainerEl = document.getElementById("day-row-container");
 var daysContainer = document.getElementById("days");
-
+var currentMonth = document.getElementById('month')
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
@@ -14,7 +14,7 @@ var daysInPrevMonth = dayjs().startOf('month').subtract(1, 'month').daysInMonth(
 var daysInNextMonth = dayjs().startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
 var nextMonthFirstDay = dayjs().startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
-console.log(nextMonthFirstDay)
+// console.log(nextMonthFirstDay)
 
 function getQuote() {
     fetch(quoteApi)
@@ -37,6 +37,9 @@ function getQuote() {
 
 // makes elements based on the number of days in the current month
 function makeDays() {
+    // dipslays current month
+    currentMonth.textContent = dayjs().format('MMMM');
+
     // make days of previous month
     for (var x = currentMonthFirstDay; x > 0; x--) {
         var button = document.createElement('button');
@@ -62,5 +65,26 @@ function makeDays() {
     }
 }
 
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+}
+
+function showPosition(position) {
+    console.log("Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude);
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    getWeather(lat, long);
+}
+  
+function getWeather(lat, long) {
+    
+}
+
 getQuote();
 makeDays();
+getLocation();
