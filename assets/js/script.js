@@ -8,6 +8,9 @@ var currentMonth = document.getElementById('month')
 var navText = document.getElementById('navText');
 var createEventEl = document.getElementById('createEvent');
 var cancelEventEl = document.getElementById('cancelEvent');
+var eventTxtEl = document.getElementById('eventTitle');
+var radioBtnsEl = document.getElementById('radio-buttons');
+
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
@@ -70,8 +73,8 @@ function makeDays() {
         dayRowContainerEl.appendChild(button);
 
         // Checks for todays date and adds an id to change color
-        var today = dayjs().format('2023-01-02');
-        // var today = dayjs().format('YYYY-MM-DD');
+        // var today = dayjs().format('2023-01-02');
+        var today = dayjs().format('YYYY-MM-DD');
         // console.log(today);
         if (today === date) {
             console.log('yes')
@@ -172,7 +175,6 @@ function getWeather(lat, long) {
 function addEventPopup(event) {
     // gets data-date attribute from target element
     var date = event.target.getAttribute('data-date');
-    console.log(date);
 
     // sets date as the event start date element value
     document.getElementById('startDate').removeAttribute('value');
@@ -189,17 +191,63 @@ function addEventPopup(event) {
 
 // TODO: add local storage functionality
 // create object based on the date clicked on and the options chosen by the user
-function createEvent() {
+function createEvent(event) {
+    event.preventDefault();
+    console.log('initialize create event');
+    // select children of radioBtnsEl by input tag
+    var radioOptions = radioBtnsEl.getElementsByTagName('input');
+    // get event title text
+    var eventTxt = eventTxtEl.value;
+    console.log(eventTxt);
+    // get category of event
+    var category;
+   
+        for (var i = 0; i < radioOptions.length; i++) {
+            if (radioOptions[i].checked) {
+                category = radioOptions[i].value;
+                console.log(category);
+            }
+        }
+    // get date
+    var date = document.getElementById('startDate').value
+    console.log(date)
+    
+    createStorageObject(date,category,eventTxt)
+    hideForm()  
+}
+// create object to store event data and save it to local storage
+function createStorageObject(date,category,eventTxt) {
+    var savedEvents = {
+        birthdays: [],
+        holidays: [],
+        personal: [], 
+        work: [],
+        school: [],
+        other: []
+    };
+    var catArray = savedEvents[category]
+    catArray.push(eventTxt);
+    console.log(savedEvents);
+    localStorage.setItem(date, JSON.stringify(savedEvents));
 
+    var toConsole = localStorage.getItem(date);
+    console.log(JSON.parse(toConsole))
+    
 }
 
 function cancelEvent() {
+    console.log('event cancelled')
     var hidePopup = document.getElementById('addEvent');
     hidePopup.style.visibility = 'hidden';
-
 }
 
+function hideForm() {
+    var hidePopup = document.getElementById('addEvent');
+    hidePopup.style.visibility = 'hidden';
+}
 getQuote();
 makeDays();
 getLocation();
 dayRowContainerEl.addEventListener('dblclick', addEventPopup);
+createEventEl.addEventListener('click', createEvent);
+cancelEventEl.addEventListener('click', cancelEvent);
