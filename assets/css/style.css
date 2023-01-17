@@ -160,8 +160,27 @@ h2 {
     #short-day-names {
         display: flex;
         font-family: var(--Athiti);
-        justify-content: space-around;
         column-gap: 10px;
+    }
+
+    #short-names-list {
+        justify-content: space-around;
+    }
+
+    #navbar {
+        width: 100%;
+    }
+
+    #legend {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #side-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
     }
 }
 
