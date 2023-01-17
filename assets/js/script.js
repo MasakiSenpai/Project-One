@@ -255,6 +255,10 @@ function createStorageObject(date,category,eventTxt) {
     }
 }
 
+function displaySideBar() {
+    
+}
+
 function cancelEvent() {
     console.log('event cancelled')
     var hidePopup = document.getElementById('addEvent');
@@ -265,9 +269,14 @@ function hideForm() {
     var hidePopup = document.getElementById('addEvent');
     hidePopup.style.visibility = 'hidden';
 }
+
+function init() {
 // getQuote();
-makeDays();
-// getLocation();
-dayRowContainerEl.addEventListener('dblclick', addEventPopup);
-createEventEl.addEventListener('click', createEvent);
-cancelEventEl.addEventListener('click', cancelEvent);
+    makeDays();
+    // getLocation();
+    dayRowContainerEl.addEventListener('dblclick', addEventPopup);
+    createEventEl.addEventListener('click', createEvent);
+    cancelEventEl.addEventListener('click', cancelEvent);
+}
+
+init();
