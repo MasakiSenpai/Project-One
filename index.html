@@ -79,7 +79,7 @@
                     <h2>Add New Event</h2>
                     <label for="eventTitle">Title: </label>
                     <input type="text" id="eventTitle" name="eventTitle" required><br>
-                    <div id="formOptions" class="p-2">
+                    <div id="radio-buttons" class="p-2">
                         <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday">
                         <label id="bday" for="chooseBirthday">Birthday</label>
 
@@ -107,8 +107,8 @@
                         <label for="end">End date: </label>
                         <input type="date" id="endDate" name="eventEnd"><br>
                     </div>
-                    <button type="submit" class="createEvent m-2 btn btnTwo" onclick="createEvent()">Create</button>
-                    <button type="button" class="cancelEvent m-2 btn btnTwo" onclick="cancelEvent()">Cancel</button>
+                    <button type="submit" id="createEvent" class="m-2 btn btnTwo">Create</button>
+                    <button type="button" id="cancelEvent" class="m-2 btn btnTwo">Cancel</button>
                 </form>
             </div>
         </div>
