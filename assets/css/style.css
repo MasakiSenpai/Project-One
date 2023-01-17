@@ -112,3 +112,58 @@ h2 {
     margin: 60px;
     width: 50%;
 }
+
+#short-day-names {
+    display: none;
+}
+
+/* tablets */
+@media screen and (max-width: 992px) {
+    #main-contents {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #calendar-container {
+        width: 94%;
+        height: 50%;
+    }
+
+    #side-container {
+        width: 94%;
+    }
+
+    #notes {
+        height: 50%;
+    }
+
+
+}
+
+/* large phones */
+@media screen and (max-width: 768px) {
+    #calendar-container {
+        width: 90%;
+        margin: 0;
+    }
+
+    .d-flex align-items-center {
+        align-items: flex-end;
+        margin: 0;
+        padding: 0;
+    }
+
+    #day-names {
+        display: none;
+    }
+
+    #short-day-names {
+        display: flex;
+        font-family: var(--Athiti);
+        justify-content: space-around;
+        column-gap: 10px;
+    }
+}
+
+/* small phones */
+@media screen and (max-width: 576px) {}

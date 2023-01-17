@@ -23,24 +23,37 @@
         </nav>
     </header>
     <main style="height: 85%;">
-        <div class="container-fluid d-flex m-0 p-0 h-100">
+        <div id=main-contents class="container-fluid d-flex m-0 p-0 h-100">
             <div id="calendar-container" class="col-md-7 m-4 bg-light">
-                <div id="hungry" class="pb-2">  
+                <div id="hungry" class="pb-2">
                     <div class="d-flex d-inline align-items-center justify-content-center">
                         <i class="fa-solid fa-chevron-left"></i>
                         <h3 id="month" class="text-center px-5" style="height: 3%"></h3>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
-                    <ul id="day-names" class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%">
-                        <li>Sunday</li>
-                        <li>Monday</li>
-                        <li>Tuesday</li>
-                        <li>Wednesday</li>
-                        <li>Thursday</li>
-                        <li>Friday</li>
-                        <li>Saturday</li>
-                    </ul>
-                </div> 
+                    <span id="day-names">
+                        <ul class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%">
+                            <li>Sunday</li>
+                            <li>Monday</li>
+                            <li>Tuesday</li>
+                            <li>Wednesday</li>
+                            <li>Thursday</li>
+                            <li>Friday</li>
+                            <li>Saturday</li>
+                        </ul>
+                    </span>
+                    <span id="short-day-names">
+                        <ul class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tues</li>
+                            <li>Wed</li>
+                            <li>Thur</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                    </span>
+                </div>
                 <div id="day-row-container" class="six-rows align-items-start" style="height: 92%">
 
                 </div>
@@ -80,7 +93,7 @@
                     <label for="eventTitle">Title: </label><br>
                     <input type="text" id="eventTitle" name="eventTitle" required><br>
                     <div>
-                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday">
+                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday" required>
                         <label for="chooseBirthday">Birthday</label><br>
 
                         <input type="radio" id="chooseHoliday" name="categoryChoice" value="Holiday">
