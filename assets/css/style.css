@@ -29,14 +29,9 @@ body {
     font-family: var(--Oleo);
 }
 
-.btn:hover {
+.btnOne:hover {
     color: var(--maybe2);
 }
-
-/* #currentDay:before {
-    content: ' \25CF';
-  font-size: 20px;
-} */
 
 #currentDay {
     background-color: var(--maybe);
@@ -108,7 +103,70 @@ h2 {
 .eventPopup {
     position: fixed;
     background-color: white;
-    border: 3px solid black;
-    margin: 60px;
-    width: 50%;
+    border: 5px solid var(--dark);
+    margin-top: 10%;
+    margin-left: 20%;
+    padding: 1%;
+    /* margin: 60px; */
+    /* width: 50%; */
+}
+
+.form {
+    font-family: var(--Athiti);
+    color: var(--dark);
+    font-weight: bold;
+    
+}
+
+#eventTitle {
+    border-color: var(--maybe);
+    border-radius: 8px;
+}
+
+input[type='radio'] {
+    accent-color: var(--maybe);
+}
+
+#bday:hover {
+    color: var(--maybe2);
+}
+
+#holi:hover {
+    color: var(--maybe2);
+}
+
+#person:hover {
+    color: var(--maybe2);
+}
+
+#workLabel:hover {
+    color: var(--maybe2);
+}
+
+#schoolLabel:hover {
+    color: var(--maybe2);
+}
+
+#otherLabel:hover {
+    color: var(--maybe2);
+}
+
+#startDate {
+    border-color: var(--maybe);
+    border-radius: 8px;
+}
+
+#endDate {
+    border-color: var(--maybe);
+    border-radius: 8px;
+}
+
+
+.btnTwo {
+    border: 2px solid var(--maybe);
+    font-family: var(--Athiti);
+}
+
+.btnTwo:hover {
+    color: var(--maybe2);
 }
