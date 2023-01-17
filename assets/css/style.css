@@ -37,12 +37,12 @@ body {
     background-color: var(--maybe);
     color: white;
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
     justify-content: center;
-    width: 30%;
-    height: 30%;
-    /* margin-top: 10%; */
+    align-items: center;
+    width: 20%;
+    height: 25%;
+    min-width: 35px; 
+    border-radius: 20px;
 }
 
 #currentDay:hover {
@@ -160,7 +160,6 @@ input[type='radio'] {
     border-color: var(--maybe);
     border-radius: 8px;
 }
-
 
 .btnTwo {
     border: 2px solid var(--maybe);
