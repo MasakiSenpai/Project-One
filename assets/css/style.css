@@ -8,7 +8,8 @@
     --school: #f7aa00;
     --other: #a70013;
     --maybe: #5c5470;
-    --dark: #48484a;
+    --maybe2: #a2a8d3;
+    --dark: #3a3a3d;
 }
 
 nav {
@@ -19,16 +20,38 @@ body {
     background-color: var(--dark);
 }
 
-/* #calendar-container {
-    padding-top: 10px;
-} */
-
 #hungry {
-    
+    background-color: var(--maybe2);
+    /* background-color: #ea8a8a; */
 }
 
 #month {
     font-family: var(--Oleo);
+}
+
+.btn:hover {
+    color: var(--maybe2);
+}
+
+/* #currentDay:before {
+    content: ' \25CF';
+  font-size: 20px;
+} */
+
+#currentDay {
+    background-color: var(--maybe);
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 30%;
+    height: 30%;
+    /* margin-top: 10%; */
+}
+
+#currentDay:hover {
+    color: var(--maybe2);
 }
 
 #day-names {
@@ -56,8 +79,6 @@ h2 {
 
 #legend {
     font-family: var(--Athiti);
-    /* font-family: 'Oleo Script', cursive; */
-
 }
 
 #holidays {
