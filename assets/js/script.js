@@ -227,17 +227,21 @@ function createStorageObject(date,category,eventTxt) {
     if (!storedObject) {
         // if object does not exist, create new object
         // create key and set value to event text
-        storedObject = {[category] : [eventTxt]};//PROBLEM: overrides existing object properties if a new category is selected
-        console.log(storedObject[category]);
+        // storedObject = {[category] : [eventTxt]}
+        storedObject = {};
+        var newArr = [];
+        newArr.push(eventTxt)
+        storedObject[category] = newArr;
         // save object to local storage
         localStorage.setItem(date, JSON.stringify(storedObject));
+        console.log(JSON.parse(localStorage.getItem(date)));
     } else if (!storedObject[category]) {
         // if user wants to create an event under a new category
-        var catName = category
         var newArr = [];
         newArr.push(eventTxt);
-        storedObject[catName] = newArr;
+        storedObject[category] = newArr;
         localStorage.setItem(date, JSON.stringify(storedObject));
+        console.log(JSON.parse(localStorage.getItem(date)));
 
     } else {
         // if user wants to add another event under an existing category
@@ -245,6 +249,7 @@ function createStorageObject(date,category,eventTxt) {
         console.log('existing array in local storage: ', existingArr);
         existingArr.push(eventTxt);
         localStorage.setItem(date, JSON.stringify(storedObject));
+        console.log(JSON.parse(localStorage.getItem(date)));
     }
 }
 
