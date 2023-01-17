@@ -33,11 +33,6 @@ body {
     color: var(--maybe2);
 }
 
-/* #currentDay:before {
-    content: ' \25CF';
-  font-size: 20px;
-} */
-
 #currentDay {
     background-color: var(--maybe);
     color: white;
@@ -108,7 +103,10 @@ h2 {
 .eventPopup {
     position: fixed;
     background-color: white;
-    border: 3px solid black;
-    margin: 60px;
-    width: 50%;
+    border: 5px solid var(--dark);
+    margin-top: 10%;
+    margin-left: 20%;
+    padding: 1%;
+    /* margin: 60px; */
+    /* width: 50%; */
 }

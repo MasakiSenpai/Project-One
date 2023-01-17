@@ -68,11 +68,11 @@ function makeDays() {
         dayRowContainerEl.appendChild(button);
 
         // Checks for todays date and adds an id to change color
-        var today = dayjs().format('2023-01-02');
-        // var today = dayjs().format('YYYY-MM-DD');
+        // var today = dayjs().format('2023-01-02');
+        var today = dayjs().format('YYYY-MM-DD');
         // console.log(today);
         if (today === date) {
-            console.log('yes')
+            // console.log('yes')
             button.setAttribute('id', 'currentDay')
         }
     }
