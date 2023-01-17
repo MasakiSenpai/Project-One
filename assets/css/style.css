@@ -41,7 +41,7 @@ body {
     align-items: center;
     width: 20%;
     height: 25%;
-    min-width: 35px; 
+    min-width: 35px;
     border-radius: 20px;
 }
 
@@ -115,7 +115,7 @@ h2 {
     font-family: var(--Athiti);
     color: var(--dark);
     font-weight: bold;
-    
+
 }
 
 #eventTitle {
@@ -169,3 +169,78 @@ input[type='radio'] {
 .btnTwo:hover {
     color: var(--maybe2);
 }
+
+
+#short-day-names {
+    display: none;
+}
+
+/* tablets */
+@media screen and (max-width: 992px) {
+    #main-contents {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #calendar-container {
+        width: 94%;
+        height: 50%;
+    }
+
+    #side-container {
+        width: 94%;
+    }
+
+    #notes {
+        height: 50%;
+    }
+
+
+}
+
+/* large phones */
+@media screen and (max-width: 768px) {
+    #calendar-container {
+        width: 90%;
+        margin: 0;
+    }
+
+    .d-flex align-items-center {
+        align-items: flex-end;
+        margin: 0;
+        padding: 0;
+    }
+
+    #day-names {
+        display: none;
+    }
+
+    #short-day-names {
+        display: flex;
+        font-family: var(--Athiti);
+        column-gap: 10px;
+    }
+
+    #short-names-list {
+        justify-content: space-around;
+    }
+
+    #navbar {
+        width: 100%;
+    }
+
+    #legend {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #side-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
+
+/* small phones */
+@media screen and (max-width: 576px) {}
