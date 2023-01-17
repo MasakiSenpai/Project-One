@@ -48,7 +48,7 @@ function makeDays() {
         var day = (daysInPrevMonth - x);
         var date = year + '-' + month + '-' + day;
 
-        button.setAttribute('class', 'btn text-secondary');
+        button.setAttribute('class', 'btn text-secondary text-start pt-2');
         button.setAttribute('data-date', date);
         button.textContent = day;
         dayRowContainerEl.appendChild(button);
@@ -63,10 +63,20 @@ function makeDays() {
         var dayString = '0' + day.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
-        button.setAttribute('class', 'btn')
+        button.setAttribute('class', 'btn text-start pt-2')
+        // button.setAttribute('id', 'currentDay')
         button.setAttribute('data-date', date);
         button.textContent = day;
         dayRowContainerEl.appendChild(button);
+
+        // Checks for todays date and adds an id to change color
+        var today = dayjs().format('2023-01-02');
+        // var today = dayjs().format('YYYY-MM-DD');
+        // console.log(today);
+        if (today === date) {
+            console.log('yes')
+            button.setAttribute('id', 'currentDay')
+        }
     }
 
     // make days of next month
@@ -77,7 +87,7 @@ function makeDays() {
         var dayString = '0' + z.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
-        button.setAttribute('class', 'btn text-secondary');
+        button.setAttribute('class', 'btn text-secondary text-start pt-2');
         button.textContent = z;
         button.setAttribute('data-date', date);
         dayRowContainerEl.appendChild(button);
