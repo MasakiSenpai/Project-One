@@ -60,6 +60,7 @@ function makeDays() {
     // make days of current month
     for (var y = 0; y < daysInCurrentMonth; y++) {
         var button = document.createElement('button');
+        var pTag = document.createElement('p')
         var year = dayjs().format('YYYY');
         var month = dayjs().format('MM');
         var day = y + 1;
@@ -69,7 +70,9 @@ function makeDays() {
         button.setAttribute('class', 'btn text-start pt-2')
         // button.setAttribute('id', 'currentDay')
         button.setAttribute('data-date', date);
-        button.textContent = day;
+        // button.textContent = day;
+        pTag.textContent = day;
+        button.appendChild(pTag);
         dayRowContainerEl.appendChild(button);
 
         // Checks for todays date and adds an id to change color
@@ -77,8 +80,8 @@ function makeDays() {
         var today = dayjs().format('YYYY-MM-DD');
         // console.log(today);
         if (today === date) {
-            console.log('yes')
-            button.setAttribute('id', 'currentDay')
+            // console.log('yes')
+            pTag.setAttribute('id', 'currentDay')
         }
     }
 
@@ -193,46 +196,56 @@ function addEventPopup(event) {
 // create object based on the date clicked on and the options chosen by the user
 function createEvent(event) {
     event.preventDefault();
-    console.log('initialize create event');
+    // console.log('initialize create event');
     // select children of radioBtnsEl by input tag
     var radioOptions = radioBtnsEl.getElementsByTagName('input');
     // get event title text
     var eventTxt = eventTxtEl.value;
-    console.log(eventTxt);
+    // console.log(eventTxt);
     // get category of event
     var category;
    
         for (var i = 0; i < radioOptions.length; i++) {
             if (radioOptions[i].checked) {
                 category = radioOptions[i].value;
-                console.log(category);
+                // console.log(category);
             }
         }
     // get date
     var date = document.getElementById('startDate').value
-    console.log(date)
+    // console.log(date)
     
-    createStorageObject(date,category,eventTxt)
-    hideForm()  
+    createStorageObject(date,category,eventTxt);
+    hideForm();
 }
 // create object to store event data and save it to local storage
 function createStorageObject(date,category,eventTxt) {
-    var savedEvents = {
-        birthdays: [],
-        holidays: [],
-        personal: [], 
-        work: [],
-        school: [],
-        other: []
-    };
-    var catArray = savedEvents[category]
-    catArray.push(eventTxt);
-    console.log(savedEvents);
-    localStorage.setItem(date, JSON.stringify(savedEvents));
+    var storedObject = JSON.parse(localStorage.getItem(date));
+    console.log('stored object: ', storedObject);
 
-    var toConsole = localStorage.getItem(date);
-    console.log(JSON.parse(toConsole))
-    
+    // set conditional to check if object exists
+    if (!storedObject) {
+        // if object does not exist, create new object
+        // create key and set value to event text
+        storedObject = {[category] : [eventTxt]};//PROBLEM: overrides existing object properties if a new category is selected
+        console.log(storedObject[category]);
+        // save object to local storage
+        localStorage.setItem(date, JSON.stringify(storedObject));
+    } else if (!storedObject[category]) {
+        // if user wants to create an event under a new category
+        var catName = category
+        var newArr = [];
+        newArr.push(eventTxt);
+        storedObject[catName] = newArr;
+        localStorage.setItem(date, JSON.stringify(storedObject));
+
+    } else {
+        // if user wants to add another event under an existing category
+        existingArr = storedObject[category];
+        console.log('existing array in local storage: ', existingArr);
+        existingArr.push(eventTxt);
+        localStorage.setItem(date, JSON.stringify(storedObject));
+    }
 }
 
 function cancelEvent() {
@@ -245,9 +258,9 @@ function hideForm() {
     var hidePopup = document.getElementById('addEvent');
     hidePopup.style.visibility = 'hidden';
 }
-getQuote();
+// getQuote();
 makeDays();
-getLocation();
+// getLocation();
 dayRowContainerEl.addEventListener('dblclick', addEventPopup);
 createEventEl.addEventListener('click', createEvent);
 cancelEventEl.addEventListener('click', cancelEvent);
