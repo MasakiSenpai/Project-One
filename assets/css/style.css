@@ -39,10 +39,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 25%;
-    height: 30%;
-    min-width: 30px; 
-    border-radius: 10px;
+    width: 20%;
+    height: 25%;
+    min-width: 35px; 
+    border-radius: 20px;
 
 }
 
