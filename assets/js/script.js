@@ -9,8 +9,7 @@ var navText = document.getElementById('navText');
 var createEventEl = document.getElementById('createEvent');
 var cancelEventEl = document.getElementById('cancelEvent');
 var eventTxtEl = document.getElementById('eventTitle');
-var radioBtnsEl = document.getElementById('radio-buttons');
-
+var radioBtnsEl = document.getElementById('formOptions');
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
@@ -69,6 +68,7 @@ function makeDays() {
 
         button.setAttribute('class', 'btn btnOne d-flex text-start p-0 h-100')
         button.setAttribute('data-date', date);
+        pTag.setAttribute('class', 'm-2')
         pTag.textContent = day;
         button.appendChild(pTag);
         dayRowContainerEl.appendChild(button);
@@ -79,9 +79,6 @@ function makeDays() {
         // console.log(today);
         if (today === date) {
             // console.log('yes')
-            pTag.setAttribute('id', 'currentDay')
-            console.log('yes')
-            // button.setAttribute('id', 'currentDay')
             pTag.setAttribute('id', 'currentDay');
             pTag.setAttribute('class', 'm-0')
         }
@@ -180,6 +177,7 @@ function getWeather(lat, long) {
 function addEventPopup(event) {
     // gets data-date attribute from target element
     var date = event.target.getAttribute('data-date');
+    console.log(date);
 
     // sets date as the event start date element value
     document.getElementById('startDate').removeAttribute('value');
@@ -237,6 +235,8 @@ function createStorageObject(date,category,eventTxt) {
         // save object to local storage
         localStorage.setItem(date, JSON.stringify(storedObject));
         console.log(JSON.parse(localStorage.getItem(date)));
+
+        displaySideBar(date);
     } else if (!storedObject[category]) {
         // if user wants to create an event under a new category
         var newArr = [];
@@ -245,6 +245,7 @@ function createStorageObject(date,category,eventTxt) {
         localStorage.setItem(date, JSON.stringify(storedObject));
         console.log(JSON.parse(localStorage.getItem(date)));
 
+        displaySideBar(date);
     } else {
         // if user wants to add another event under an existing category
         existingArr = storedObject[category];
@@ -252,11 +253,37 @@ function createStorageObject(date,category,eventTxt) {
         existingArr.push(eventTxt);
         localStorage.setItem(date, JSON.stringify(storedObject));
         console.log(JSON.parse(localStorage.getItem(date)));
+
+        displaySideBar(date);
     }
 }
 
-function displaySideBar() {
+function displaySideBar(date) {
+    var storedObject = JSON.parse(localStorage.getItem(date));
     
+    for (keys in storedObject) {
+        console.log('key: ', keys)
+        var propertyValues = storedObject[keys]
+        console.log(propertyValues);
+        var key = keys.toString();
+        console.log('key string: ', key);
+
+        for (var i = 0; i < propertyValues.length; i++) {
+
+            var liEl = document.createElement('li');
+            liEl.setAttribute('id', 'note-items');
+            liEl.textContent = propertyValues[i];
+
+            var category = document.getElementById([key]);
+            // category.removeChild(li)
+            category.appendChild(liEl);
+        }
+    }
+}
+
+function displayElements(event) {
+    var date = event.target.getAttribute('data-date')
+    displaySideBar(date);
 }
 
 function cancelEvent() {
@@ -275,6 +302,7 @@ function init() {
     makeDays();
     // getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
+    dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
     cancelEventEl.addEventListener('click', cancelEvent);
 }

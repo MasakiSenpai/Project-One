@@ -71,6 +71,8 @@ h2 {
 
 #note-items {
     font-family: var(--Athiti);
+    color: var(--dark);
+    font-size: 1.4rem;
 }
 
 #legend {

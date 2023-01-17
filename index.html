@@ -25,22 +25,35 @@
     <main style="height: 85%;">
         <div class="container-fluid d-flex m-0 p-0 h-100">
             <div id="calendar-container" class="col-md-7 m-4 bg-light">
-                <div id="hungry" class="pb-2">  
+                <div id="hungry" class="pb-2">
                     <div class="d-flex d-inline align-items-center justify-content-center">
                         <i class="fa-solid fa-chevron-left"></i>
                         <h3 id="month" class="text-center px-5" style="height: 3%"></h3>
                         <i class="fa-solid fa-chevron-right"></i>
                     </div>
-                    <ul id="day-names" class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%">
-                        <li>Sunday</li>
-                        <li>Monday</li>
-                        <li>Tuesday</li>
-                        <li>Wednesday</li>
-                        <li>Thursday</li>
-                        <li>Friday</li>
-                        <li>Saturday</li>
-                    </ul>
-                </div> 
+                    <span id="day-names">
+                        <ul class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%">
+                            <li>Sunday</li>
+                            <li>Monday</li>
+                            <li>Tuesday</li>
+                            <li>Wednesday</li>
+                            <li>Thursday</li>
+                            <li>Friday</li>
+                            <li>Saturday</li>
+                        </ul>
+                    </span>
+                    <span id="short-day-names">
+                        <ul class="list-unstyled d-flex justify-content-around fs-5" style="height: 3%;">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tues</li>
+                            <li>Wed</li>
+                            <li>Thur</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                    </span>
+                </div>
                 <div id="day-row-container" class="six-rows align-items-start" style="height: 92%">
 
                 </div>
@@ -52,9 +65,9 @@
                 </div>
 
                 <div id="notes" class="d-flex flex-column flex-wrap fs-4 p-2 h-75 bg-light">
+                    <!-- use id="note-items" for li elements -->
                     <ul class="list-unstyled">
                         <h2 id="birthdays">Birthdays</h2>
-                        <li id="note-items">Hello</li>
                     </ul>
                     <ul class="list-unstyled">
                         <h2 id="holidays">Holidays</h2>
@@ -79,11 +92,11 @@
                     <h2>Add New Event</h2>
                     <label for="eventTitle">Title: </label>
                     <input type="text" id="eventTitle" name="eventTitle" required><br>
-                    <div id="radio-buttons" class="p-2">
-                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthday">
+                    <div id="formOptions" class="p-2">
+                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthdays">
                         <label id="bday" for="chooseBirthday">Birthday</label>
 
-                        <input type="radio" id="chooseHoliday" name="categoryChoice" value="holiday">
+                        <input type="radio" id="chooseHoliday" name="categoryChoice" value="holidays">
                         <label id="holi" for="chooseHoliday">Holiday</label><br>
 
                         <input type="radio" id="choosePersonal" name="categoryChoice" value="personal">
@@ -102,7 +115,7 @@
                         <label for="start">Start date: </label>
                         <input type="date" id="startDate" name="eventStart" required>
                     </div>
-                    
+
                     <div class="p-1">
                         <label for="end">End date: </label>
                         <input type="date" id="endDate" name="eventEnd"><br>
@@ -112,7 +125,6 @@
                 </form>
             </div>
         </div>
-
         <div id="legend" class="m-4 fs-3" style="height: 8%;">
 
             <ul class="list-unstyled d-flex justify-content-around text-white">
