@@ -10,6 +10,7 @@ var createEventEl = document.getElementById('createEvent');
 var cancelEventEl = document.getElementById('cancelEvent');
 var eventTxtEl = document.getElementById('eventTitle');
 var radioBtnsEl = document.getElementById('formOptions');
+var notesEl = document.getElementById('notes');
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
@@ -258,33 +259,49 @@ function createStorageObject(date,category,eventTxt) {
     }
 }
 
+function displayElements(event) {
+    var date = event.target.getAttribute('data-date')
+    displaySideBar(date);
+}
+
 function displaySideBar(date) {
+    // clear items
+    // for (var i = 0; i < notesEl.children.length; i++) {
+    //     console.log(notesEl.children[i].children);
+    //     notesEl.children[i].getElementsByTagName('div').remove;
+    // }
+
     var storedObject = JSON.parse(localStorage.getItem(date));
+    console.log(storedObject)
+
+    var noteItems = document.getElementById('note-items');
+
+    if (!storedObject) {
+        noteItems.remove
+    }
     
     for (keys in storedObject) {
-        console.log('key: ', keys)
         var propertyValues = storedObject[keys]
-        console.log(propertyValues);
-        var key = keys.toString();
-        console.log('key string: ', key);
+        console.log('key: ', keys)
+        console.log('value ', propertyValues);
+        
+        if (noteItems) {
+            noteItems.remove();
+        }
 
         for (var i = 0; i < propertyValues.length; i++) {
 
+            var category = document.getElementById(keys);
             var liEl = document.createElement('li');
+            console.log(category.children);
+
             liEl.setAttribute('id', 'note-items');
             liEl.textContent = propertyValues[i];
-
-            var category = document.getElementById([key]);
-            // category.removeChild(li)
             category.appendChild(liEl);
         }
     }
 }
 
-function displayElements(event) {
-    var date = event.target.getAttribute('data-date')
-    displaySideBar(date);
-}
 
 function cancelEvent() {
     console.log('event cancelled')
