@@ -6,6 +6,8 @@ var dayRowContainerEl = document.getElementById('day-row-container');
 var daysContainer = document.getElementById('days');
 var currentMonth = document.getElementById('month')
 var navText = document.getElementById('navText');
+var createEventEl = document.getElementById('createEvent');
+var cancelEventEl = document.getElementById('cancelEvent');
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
