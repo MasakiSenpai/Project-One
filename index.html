@@ -88,37 +88,40 @@
 
             </div>
             <div class="eventPopup" id="addEvent" style="visibility:hidden">
-                <form>
-                    <h1>Add New Event</h1>
-                    <label for="eventTitle">Title: </label><br>
+                <form class="text-center form">
+                    <h2>Add New Event</h2>
+                    <label for="eventTitle">Title: </label>
                     <input type="text" id="eventTitle" name="eventTitle" required><br>
-                    <div>
-                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday" required>
-                        <label for="chooseBirthday">Birthday</label><br>
+                    <div id="formOptions" class="p-2">
+                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="Birthday">
+                        <label id="bday" for="chooseBirthday">Birthday</label>
 
                         <input type="radio" id="chooseHoliday" name="categoryChoice" value="Holiday">
-                        <label for="chooseHoliday">Holiday</label><br>
+                        <label id="holi" for="chooseHoliday">Holiday</label><br>
 
                         <input type="radio" id="choosePersonal" name="categoryChoice" value="Personal">
-                        <label for="choosePersonal">Personal</label><br>
+                        <label id="person" for="choosePersonal">Personal</label>
 
                         <input type="radio" id="chooseWork" name="categoryChoice" value="Work">
-                        <label for="chooseWork">Work</label><br>
+                        <label id="workLabel" for="chooseWork">Work</label><br>
 
                         <input type="radio" id="chooseSchool" name="categoryChoice" value="School">
-                        <label for="chooseSchool">School</label><br>
+                        <label id="schoolLabel" for="chooseSchool">School</label>
 
                         <input type="radio" id="chooseOther" name="categoryChoice" value="Other">
-                        <label for="chooseOther">Other</label><br>
+                        <label id="otherLabel" for="chooseOther">Other</label><br>
                     </div>
-                    <label for="start">Start date: </label>
-                    <input type="date" id="startDate" name="eventStart" required>
-
-                    <label for="end">End date: </label>
-                    <input type="date" id="endDate" name="eventEnd"><br>
-
-                    <button type="submit" class="createEvent" onclick="createEvent()">Create</button>
-                    <button type="button" class="cancelEvent" onclick="cancelEvent()">Cancel</button>
+                    <div class="p-1">
+                        <label for="start">Start date: </label>
+                        <input type="date" id="startDate" name="eventStart" required>
+                    </div>
+                    
+                    <div class="p-1">
+                        <label for="end">End date: </label>
+                        <input type="date" id="endDate" name="eventEnd"><br>
+                    </div>
+                    <button type="submit" class="createEvent m-2 btn btnTwo" onclick="createEvent()">Create</button>
+                    <button type="button" class="cancelEvent m-2 btn btnTwo" onclick="cancelEvent()">Cancel</button>
                 </form>
             </div>
         </div>
