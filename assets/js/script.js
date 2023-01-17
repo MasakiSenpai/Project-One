@@ -204,22 +204,22 @@ function createEvent(event) {
     // console.log(eventTxt);
     // get category of event
     var category;
-   
-        for (var i = 0; i < radioOptions.length; i++) {
-            if (radioOptions[i].checked) {
-                category = radioOptions[i].value;
-                // console.log(category);
-            }
+
+    for (var i = 0; i < radioOptions.length; i++) {
+        if (radioOptions[i].checked) {
+            category = radioOptions[i].value;
+            // console.log(category);
         }
+    }
     // get date
     var date = document.getElementById('startDate').value
     // console.log(date)
-    
-    createStorageObject(date,category,eventTxt);
+
+    createStorageObject(date, category, eventTxt);
     hideForm();
 }
 // create object to store event data and save it to local storage
-function createStorageObject(date,category,eventTxt) {
+function createStorageObject(date, category, eventTxt) {
     var storedObject = JSON.parse(localStorage.getItem(date));
     console.log('stored object: ', storedObject);
 
@@ -260,7 +260,7 @@ function createStorageObject(date,category,eventTxt) {
 
 function displaySideBar(date) {
     var storedObject = JSON.parse(localStorage.getItem(date));
-    
+
     for (keys in storedObject) {
         console.log('key: ', keys)
         var propertyValues = storedObject[keys]
@@ -298,7 +298,7 @@ function hideForm() {
 }
 
 function init() {
-// getQuote();
+    // getQuote();
     makeDays();
     // getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);

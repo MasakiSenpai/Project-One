@@ -185,62 +185,81 @@ input[type='radio'] {
     }
 
     #calendar-container {
-        width: 94%;
+        width: 83%;
         height: 50%;
     }
 
     #side-container {
-        width: 94%;
+        width: 83%;
     }
 
     #notes {
         height: 50%;
     }
 
-
-}
-
-/* large phones */
-@media screen and (max-width: 768px) {
-    #calendar-container {
-        width: 90%;
-        margin: 0;
-    }
-
-    .d-flex align-items-center {
-        align-items: flex-end;
-        margin: 0;
-        padding: 0;
-    }
-
-    #day-names {
-        display: none;
-    }
-
-    #short-day-names {
-        display: flex;
-        font-family: var(--Athiti);
-        column-gap: 10px;
-    }
-
-    #short-names-list {
-        justify-content: space-around;
+    #legend {
+        width: 83%;
     }
 
     #navbar {
         width: 100%;
     }
 
-    #legend {
+}
+
+/* large phones */
+@media screen and (max-width: 768px) {
+    #calendar-container {
+        height: 70%;
+    }
+
+    /* .d-flex align-items-center {
+        align-items: flex-end;
+        margin: 0;
+        padding: 0;
+    } */
+
+    #day-names {
+        display: none;
+    }
+
+    #short-day-names {
+        display: block;
+        justify-content: space-between;
+        font-family: var(--Athiti);
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    /* #short-names-list {
+        justify-content: space-around;
+    }
+
+    #navbar {
         width: 100%;
-        display: flex;
+    } */
+
+    #legend {
+        position: relative;
+        width: 100%;
+        display: inline;
         flex-wrap: wrap;
     }
 
-    #side-container {
+    /* #side-container {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+    } */
+
+    #notes {
+        flex: auto;
+    }
+
+    main {
+        display: flex;
     }
 }
 

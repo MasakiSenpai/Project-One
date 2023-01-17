@@ -23,7 +23,7 @@
         </nav>
     </header>
     <main style="height: 85%;">
-        <div class="container-fluid d-flex m-0 p-0 h-100">
+        <div id="main-contents" class="container-fluid d-flex m-0 p-0 h-100">
             <div id="calendar-container" class="col-md-7 m-4 bg-light">
                 <div id="hungry" class="pb-2">
                     <div class="d-flex d-inline align-items-center justify-content-center">
@@ -87,43 +87,43 @@
                 </div>
 
             </div>
-            <div class="eventPopup" id="addEvent" style="visibility:hidden">
-                <form class="text-center form">
-                    <h2>Add New Event</h2>
-                    <label for="eventTitle">Title: </label>
-                    <input type="text" id="eventTitle" name="eventTitle" required><br>
-                    <div id="formOptions" class="p-2">
-                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthdays">
-                        <label id="bday" for="chooseBirthday">Birthday</label>
+        </div>
+        <div class="eventPopup" id="addEvent" style="visibility:hidden">
+            <form class="text-center form">
+                <h2>Add New Event</h2>
+                <label for="eventTitle">Title: </label>
+                <input type="text" id="eventTitle" name="eventTitle" required><br>
+                <div id="formOptions" class="p-2">
+                    <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthdays">
+                    <label id="bday" for="chooseBirthday">Birthday</label>
 
-                        <input type="radio" id="chooseHoliday" name="categoryChoice" value="holidays">
-                        <label id="holi" for="chooseHoliday">Holiday</label><br>
+                    <input type="radio" id="chooseHoliday" name="categoryChoice" value="holidays">
+                    <label id="holi" for="chooseHoliday">Holiday</label><br>
 
-                        <input type="radio" id="choosePersonal" name="categoryChoice" value="personal">
-                        <label id="person" for="choosePersonal">Personal</label>
+                    <input type="radio" id="choosePersonal" name="categoryChoice" value="personal">
+                    <label id="person" for="choosePersonal">Personal</label>
 
-                        <input type="radio" id="chooseWork" name="categoryChoice" value="work">
-                        <label id="workLabel" for="chooseWork">Work</label><br>
+                    <input type="radio" id="chooseWork" name="categoryChoice" value="work">
+                    <label id="workLabel" for="chooseWork">Work</label><br>
 
-                        <input type="radio" id="chooseSchool" name="categoryChoice" value="school">
-                        <label id="schoolLabel" for="chooseSchool">School</label>
+                    <input type="radio" id="chooseSchool" name="categoryChoice" value="school">
+                    <label id="schoolLabel" for="chooseSchool">School</label>
 
-                        <input type="radio" id="chooseOther" name="categoryChoice" value="other">
-                        <label id="otherLabel" for="chooseOther">Other</label><br>
-                    </div>
-                    <div class="p-1">
-                        <label for="start">Start date: </label>
-                        <input type="date" id="startDate" name="eventStart" required>
-                    </div>
+                    <input type="radio" id="chooseOther" name="categoryChoice" value="other">
+                    <label id="otherLabel" for="chooseOther">Other</label><br>
+                </div>
+                <div class="p-1">
+                    <label for="start">Start date: </label>
+                    <input type="date" id="startDate" name="eventStart" required>
+                </div>
 
-                    <div class="p-1">
-                        <label for="end">End date: </label>
-                        <input type="date" id="endDate" name="eventEnd"><br>
-                    </div>
-                    <button type="submit" id="createEvent" class="m-2 btn btnTwo">Create</button>
-                    <button type="button" id="cancelEvent" class="m-2 btn btnTwo">Cancel</button>
-                </form>
-            </div>
+                <div class="p-1">
+                    <label for="end">End date: </label>
+                    <input type="date" id="endDate" name="eventEnd"><br>
+                </div>
+                <button type="submit" id="createEvent" class="m-2 btn btnTwo">Create</button>
+                <button type="button" id="cancelEvent" class="m-2 btn btnTwo">Cancel</button>
+            </form>
         </div>
         <div id="legend" class="m-4 fs-3" style="height: 8%;">
 
