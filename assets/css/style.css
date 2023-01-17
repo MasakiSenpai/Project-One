@@ -37,12 +37,13 @@ body {
     background-color: var(--maybe);
     color: white;
     display: flex;
-    flex-wrap: wrap;
-    align-content: center;
     justify-content: center;
-    width: 30%;
+    align-items: center;
+    width: 25%;
     height: 30%;
-    /* margin-top: 10%; */
+    min-width: 30px; 
+    border-radius: 10px;
+
 }
 
 #currentDay:hover {

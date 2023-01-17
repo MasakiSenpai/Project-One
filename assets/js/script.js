@@ -46,7 +46,7 @@ function makeDays() {
         var day = (daysInPrevMonth - x);
         var date = year + '-' + month + '-' + day;
 
-        button.setAttribute('class', 'btn btnOne text-secondary text-start pt-2');
+        button.setAttribute('class', 'btn btnOne text-secondary d-flex text-start pt-2 h-100');
         button.setAttribute('data-date', date);
         button.textContent = day;
         dayRowContainerEl.appendChild(button);
@@ -55,16 +55,18 @@ function makeDays() {
     // make days of current month
     for (var y = 0; y < daysInCurrentMonth; y++) {
         var button = document.createElement('button');
+        var pTag = document.createElement('p');
         var year = dayjs().format('YYYY');
         var month = dayjs().format('MM');
         var day = y + 1;
         var dayString = '0' + day.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
-        button.setAttribute('class', 'btn btnOne text-start pt-2')
-        // button.setAttribute('id', 'currentDay')
+        button.setAttribute('class', 'btn btnOne d-flex text-start p-0 h-100')
         button.setAttribute('data-date', date);
-        button.textContent = day;
+        pTag.setAttribute('class', 'm-2')
+        pTag.textContent = day;
+        button.appendChild(pTag);
         dayRowContainerEl.appendChild(button);
 
         // Checks for todays date and adds an id to change color
@@ -72,8 +74,10 @@ function makeDays() {
         var today = dayjs().format('YYYY-MM-DD');
         // console.log(today);
         if (today === date) {
-            // console.log('yes')
-            button.setAttribute('id', 'currentDay')
+            console.log('yes')
+            // button.setAttribute('id', 'currentDay')
+            pTag.setAttribute('id', 'currentDay');
+            pTag.setAttribute('class', 'm-0')
         }
     }
 
@@ -85,7 +89,7 @@ function makeDays() {
         var dayString = '0' + z.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
-        button.setAttribute('class', 'btn btnOne text-secondary text-start pt-2');
+        button.setAttribute('class', 'btn btnOne text-secondary d-flex text-start pt-2 h-100');
         button.textContent = z;
         button.setAttribute('data-date', date);
         dayRowContainerEl.appendChild(button);
