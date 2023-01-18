@@ -20,6 +20,10 @@ body {
     background-color: var(--dark);
 }
 
+#calendar-container {
+    margin-left: 2%;
+}
+
 #hungry {
     background-color: var(--maybe2);
     /* background-color: #ea8a8a; */
@@ -63,8 +67,18 @@ body {
     height: 100%;
 }
 
+#side-container {
+    margin-left: 3%;
+}
+
 #quote-box {
     font-family: var(--Athiti);
+    margin-top: 40px;
+    font-size:x-large;
+}
+
+#notes {
+    height: 730px;
 }
 
 h2 {
@@ -79,6 +93,7 @@ h2 {
 
 #legend {
     font-family: var(--Athiti);
+    margin-top: 20px;
 }
 
 #holidays {
@@ -105,15 +120,15 @@ h2 {
     color: var(--other)
 }
 
-.eventPopup {
-    position: fixed;
+#addEvent {
+    position: absolute;
     background-color: white;
     border: 5px solid var(--dark);
-    margin-top: 10%;
-    margin-left: 15%;
+    margin-top: 160px;
+    margin-left: 18%;
     padding: 1%;
     /* margin: 60px; */
-    width: 30%;
+    width: 25%;
 }
 
 .form {
@@ -188,32 +203,51 @@ input[type='radio'] {
     }
 
     #calendar-container {
-        width: 90%;
+        width: 100%;
         height: 50%;
+        margin: 0%;
+    }
+
+    #addEvent {
+        margin-left: 38%;
+        margin-top: 150px;
+        min-width: 220px;
     }
 
     #side-container {
-        width: 90%;
+        width: 100%;
+        margin: 0%;
+    }
 
+    #quote-box {
+        margin-top: 20PX;
+        font-size: large;
     }
 
     #notes {
-        height: 50%;
+        height: 60%;
+        max-height: 400px;
     }
 
     #legend {
-        margin: 0;
-        display: block;
-        justify-content: center;
-        width: 90%;
+        margin-top: 5%;
+        /* width: 100%; */
 
     }
 
+    #legend li {
+        padding: 3%;
+        font-size: large;
+    }
 
 }
 
 /* large phones */
 @media screen and (max-width: 768px) {
+    #navbar {
+        width: 100%;
+    }
+    
     #calendar-container {
         width: 100%;
         height: 70%;
@@ -232,20 +266,32 @@ input[type='radio'] {
         display: inline-block;
     }
 
-    #navbar {
-        width: 100%;
-    }
-
-    #legend {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        position: absolute;
+    #addEvent {
+        margin-left: 35%;
+        margin-top: 150px;
+        min-width: 220px;
     }
 
     #side-container {
-        width: 100%;
+         width: 100%;
     }
+
+    #quote-box {
+        margin: 0;
+        font-size: medium;
+    }
+
+    #legend {
+        margin-top: 150px;
+        display: flex;
+        justify-content: space-around;
+        padding: 2%;
+    }
+
+    #legend li {
+        padding: 3%;
+    }
+
 }
 
 /* small phones */

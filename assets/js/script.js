@@ -178,7 +178,7 @@ function getWeather(lat, long) {
 function addEventPopup(event) {
     // gets data-date attribute from target element
     var date = event.target.getAttribute('data-date');
-    console.log(date);
+    // console.log(date);
 
     // sets date as the event start date element value
     document.getElementById('startDate').removeAttribute('value');
@@ -320,9 +320,9 @@ function hideForm() {
 }
 
 function init() {
-// getQuote();
+getQuote();
     makeDays();
-    // getLocation();
+    getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', clearItems);
     dayRowContainerEl.addEventListener('click', displayElements);
