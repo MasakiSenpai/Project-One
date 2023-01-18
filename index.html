@@ -23,7 +23,7 @@
         </nav>
     </header>
     <main style="height: 85%;">
-        <div class="container-fluid d-flex m-0 p-0 h-100">
+        <div id="main-contents" class="container-fluid d-flex m-0 p-0 h-100">
             <div id="calendar-container" class="col-md-7 m-4 bg-light">
                 <div id="hungry" class="pb-2">
                     <div class="d-flex d-inline align-items-center justify-content-center">
@@ -93,7 +93,7 @@
                     <label for="eventTitle">Title: </label>
                     <input type="text" id="eventTitle" name="eventTitle" required><br>
                     <div id="formOptions" class="p-2">
-                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthdays">
+                        <input type="radio" id="chooseBirthday" name="categoryChoice" value="birthdays" required>
                         <label id="bday" for="chooseBirthday">Birthday</label>
 
                         <input type="radio" id="chooseHoliday" name="categoryChoice" value="holidays">
