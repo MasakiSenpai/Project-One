@@ -260,8 +260,9 @@ function createStorageObject(date,category,eventTxt) {
     // set conditional to check if object exists
     if (!storedObject) {
         var indicatorEl = document.createElement('p');
+        indicatorEl.setAttribute('id', 'sticky-note');
         var icon = document.createElement('i');
-        icon.setAttribute('class', 'fa-solid fa-note-sticky justify-content-end align-items-end')
+        icon.setAttribute('class', 'fa-solid fa-note-sticky')
         indicatorEl.appendChild(icon);
         document.querySelector(`[data-date="${date}"]`).appendChild(indicatorEl);
         // if object does not exist, create new object
