@@ -15,13 +15,12 @@ var leftArrow = document.getElementById('left-arrow');
 var rightArrow = document.getElementById('right-arrow');
 
 var monthIndex = dayjs().get('month')
-var dateObject = dayjs().set('month', monthIndex).startOf('month');
 
-var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
-var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
-var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
-var daysInNextMonth = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
-var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
+// var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
+// var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
+// var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
+// var daysInNextMonth = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
+// var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
 // api call and population of html elements to display quote of the day
 function getQuote() {
@@ -62,14 +61,13 @@ function nextMonth() {
 }
 
 function displayMonth() {
-    // dipslays current month
+    // updates text content of the month name
     currentMonth.textContent = dayjs().set('month', monthIndex).format('MMMM');
 
     clearMonth();
 }
 
 function clearMonth() {
-    console.log(dayRowContainerEl.children)
     while (dayRowContainerEl.hasChildNodes()) {
         dayRowContainerEl.removeChild(dayRowContainerEl.firstChild)
     }
@@ -79,12 +77,17 @@ function clearMonth() {
 
 // makes elements based on the number of days in the current month
 function makeDays() {
+    currentMonth.textContent = dayjs().set('month', monthIndex).format('MMMM');
+    var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
+    var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
+    var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
+    var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
     // make days of previous month
     for (var x = currentMonthFirstDay; x > 0; x--) {
         var button = document.createElement('button');
-        var year = dayjs().subtract(1, 'month').format('YYYY');
-        var month = dayjs().subtract(1, 'month').format('MM');
+        var year = dayjs().set('month', monthIndex).subtract(1, 'month').format('YYYY');
+        var month = dayjs().set('month', monthIndex).subtract(1, 'month').format('MM');
         var day = (daysInPrevMonth - x);
         var date = year + '-' + month + '-' + day;
 
@@ -98,8 +101,8 @@ function makeDays() {
     for (var y = 0; y < daysInCurrentMonth; y++) {
         var button = document.createElement('button');
         var pTag = document.createElement('p');
-        var year = dayjs().format('YYYY');
-        var month = dayjs().format('MM');
+        var year = dayjs().set('month', monthIndex).format('YYYY');
+        var month = dayjs().set('month', monthIndex).format('MM');
         var day = y + 1;
         var dayString = '0' + day.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
@@ -114,7 +117,8 @@ function makeDays() {
         // Checks for todays date and adds an id to change color
         // var today = dayjs().format('2023-01-02');
         var today = dayjs().format('YYYY-MM-DD');
-        // console.log(today);
+        console.log(today);
+        console.log(date);
         if (today === date) {
             // console.log('yes')
             pTag.setAttribute('id', 'currentDay');
@@ -125,8 +129,8 @@ function makeDays() {
     // make days of next month
     for (var z = 1; z <= 7 - nextMonthFirstDay; z++) {
         var button = document.createElement('button');
-        var year = dayjs().add(1, 'month').format('YYYY');
-        var month = dayjs().add(1, 'month').format('MM');
+        var year = dayjs().set('month', monthIndex).add(1, 'month').format('YYYY');
+        var month = dayjs().set('month', monthIndex).add(1, 'month').format('MM');
         var dayString = '0' + z.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
@@ -359,8 +363,8 @@ function hideForm() {
 function init() {
     getLocation();
     getQuote();
-    displayMonth();
-    // makeDays();
+    // displayMonth();
+    makeDays();
 
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', clearItems);
