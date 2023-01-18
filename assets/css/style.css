@@ -120,14 +120,14 @@ h2 {
 }
 
 #addEvent {
-    position: fixed;
+    position: absolute;
     background-color: white;
     border: 5px solid var(--dark);
-    margin-top: 10%;
-    margin-left: 15%;
+    margin-top: 160px;
+    margin-left: 18%;
     padding: 1%;
     /* margin: 60px; */
-    width: 30%;
+    width: 25%;
 }
 
 .form {
@@ -208,8 +208,9 @@ input[type='radio'] {
     }
 
     #addEvent {
-        margin-left: 35%;
-        margin-top: 19%;
+        margin-left: 38%;
+        margin-top: 150px;
+        min-width: 220px;
     }
 
     #side-container {
@@ -224,12 +225,13 @@ input[type='radio'] {
 
     #legend {
         margin-top: 55px;
-        display: block;
-        justify-content: center;
-        width: 100%;
+        /* width: 100%; */
 
     }
 
+    #legend li {
+        padding: 5%;
+    }
 
 }
 
@@ -257,6 +259,12 @@ input[type='radio'] {
         display: inline-block;
     }
 
+    #addEvent {
+        margin-left: 35%;
+        margin-top: 150px;
+        min-width: 220px;
+    }
+
     #side-container {
          width: 100%;
     }
@@ -266,13 +274,11 @@ input[type='radio'] {
     }
 
     #legend {
-        width: 100%;
+        /* width: 100%; */
         margin-top: 180px;
         display: flex;
         justify-content: space-around;
         padding: 2%;
-        /* flex-wrap: wrap; */
-        /* position: absolute; */
     }
 
     #legend li {
