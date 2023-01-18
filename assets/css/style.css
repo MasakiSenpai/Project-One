@@ -42,6 +42,9 @@ body {
     width: 20%;
     height: 25%;
     min-width: 35px;
+    min-height: 35px;
+    max-width: 40px;
+    max-height: 40px;
     border-radius: 20px;
 }
 
@@ -107,10 +110,10 @@ h2 {
     background-color: white;
     border: 5px solid var(--dark);
     margin-top: 10%;
-    margin-left: 20%;
+    margin-left: 15%;
     padding: 1%;
     /* margin: 60px; */
-    /* width: 50%; */
+    width: 30%;
 }
 
 .form {
