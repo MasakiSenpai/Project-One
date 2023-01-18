@@ -188,16 +188,25 @@ input[type='radio'] {
     }
 
     #calendar-container {
-        width: 94%;
+        width: 90%;
         height: 50%;
     }
 
     #side-container {
-        width: 94%;
+        width: 90%;
+
     }
 
     #notes {
         height: 50%;
+    }
+
+    #legend {
+        margin: 0;
+        display: block;
+        justify-content: center;
+        width: 90%;
+
     }
 
 
@@ -206,14 +215,8 @@ input[type='radio'] {
 /* large phones */
 @media screen and (max-width: 768px) {
     #calendar-container {
-        width: 90%;
-        margin: 0;
-    }
-
-    .d-flex align-items-center {
-        align-items: flex-end;
-        margin: 0;
-        padding: 0;
+        width: 100%;
+        height: 70%;
     }
 
     #day-names {
@@ -221,13 +224,12 @@ input[type='radio'] {
     }
 
     #short-day-names {
-        display: flex;
+        display: block;
         font-family: var(--Athiti);
-        column-gap: 10px;
     }
 
     #short-names-list {
-        justify-content: space-around;
+        display: inline-block;
     }
 
     #navbar {
@@ -238,14 +240,17 @@ input[type='radio'] {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        position: absolute;
     }
 
     #side-container {
         width: 100%;
-        display: flex;
-        flex-wrap: wrap;
     }
 }
 
 /* small phones */
-@media screen and (max-width: 576px) {}
+@media screen and (max-width: 576px) {
+    #navbar {
+        width: 100%;
+    }
+}
