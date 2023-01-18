@@ -11,12 +11,11 @@ var cancelEventEl = document.getElementById('cancelEvent');
 var eventTxtEl = document.getElementById('eventTitle');
 var radioBtnsEl = document.getElementById('formOptions');
 var notesEl = document.getElementById('notes');
+var leftArrow = document.getElementById('left-arrow');
+var rightArrow = document.getElementById('right-arrow');
 
-var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
-var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
-var daysInPrevMonth = dayjs().startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
-var daysInNextMonth = dayjs().startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
-var nextMonthFirstDay = dayjs().startOf('month').add(1, 'month').get('d'); //returns day of week as index
+var monthIndex = dayjs().get('month')
+
 
 // api call and population of html elements to display quote of the day
 function getQuote() {
@@ -24,7 +23,6 @@ function getQuote() {
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
             var author = data.author;
             var quote = data.quote;
             var authorEl = document.createElement('p');
@@ -38,16 +36,52 @@ function getQuote() {
         })
 }
 
+function previousMonth() {
+    monthIndex--;
+    if (monthIndex < 0) {
+        monthIndex = 11;
+    }
+
+    displayMonth();
+}
+
+function nextMonth() {
+    monthIndex++;
+    if (monthIndex > 11) {
+        monthIndex = 0;
+    }
+
+    displayMonth();
+}
+
+function displayMonth() {
+    // updates text content of the month name
+    currentMonth.textContent = dayjs().set('month', monthIndex).format('MMMM');
+
+    clearMonth();
+}
+
+function clearMonth() {
+    while (dayRowContainerEl.hasChildNodes()) {
+        dayRowContainerEl.removeChild(dayRowContainerEl.firstChild)
+    }
+    makeDays();
+}
+
+
 // makes elements based on the number of days in the current month
 function makeDays() {
-    // dipslays current month
-    currentMonth.textContent = dayjs().format('MMMM');
+    currentMonth.textContent = dayjs().set('month', monthIndex).format('MMMM');
+    var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
+    var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
+    var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
+    var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
     // make days of previous month
     for (var x = currentMonthFirstDay; x > 0; x--) {
         var button = document.createElement('button');
-        var year = dayjs().subtract(1, 'month').format('YYYY');
-        var month = dayjs().subtract(1, 'month').format('MM');
+        var year = dayjs().set('month', monthIndex).subtract(1, 'month').format('YYYY');
+        var month = dayjs().set('month', monthIndex).subtract(1, 'month').format('MM');
         var day = (daysInPrevMonth - x);
         var date = year + '-' + month + '-' + day;
 
@@ -61,8 +95,8 @@ function makeDays() {
     for (var y = 0; y < daysInCurrentMonth; y++) {
         var button = document.createElement('button');
         var pTag = document.createElement('p');
-        var year = dayjs().format('YYYY');
-        var month = dayjs().format('MM');
+        var year = dayjs().set('month', monthIndex).format('YYYY');
+        var month = dayjs().set('month', monthIndex).format('MM');
         var day = y + 1;
         var dayString = '0' + day.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
@@ -77,7 +111,6 @@ function makeDays() {
         // Checks for todays date and adds an id to change color
         // var today = dayjs().format('2023-01-02');
         var today = dayjs().format('YYYY-MM-DD');
-        // console.log(today);
         if (today === date) {
             // console.log('yes')
             pTag.setAttribute('id', 'currentDay');
@@ -88,8 +121,8 @@ function makeDays() {
     // make days of next month
     for (var z = 1; z <= 7 - nextMonthFirstDay; z++) {
         var button = document.createElement('button');
-        var year = dayjs().add(1, 'month').format('YYYY');
-        var month = dayjs().add(1, 'month').format('MM');
+        var year = dayjs().set('month', monthIndex).add(1, 'month').format('YYYY');
+        var month = dayjs().set('month', monthIndex).add(1, 'month').format('MM');
         var dayString = '0' + z.toString();
         var date = year + '-' + month + '-' + dayString.slice(-2);
 
@@ -122,7 +155,7 @@ function getDefault() {
         return response.json()
 
     }).then(function (data) {
-        console.log(data);
+        // console.log(data);
         var location = data.name;
         var high = data.main.temp_max;
         var low = data.main.temp_min;
@@ -141,8 +174,8 @@ function getDefault() {
 
 // function defines variables with latitude and longitude as their values
 function getCoordinates(position) {
-    console.log('Latitude: ' + position.coords.latitude);
-    console.log('Longitude: ' + position.coords.longitude);
+    // console.log('Latitude: ' + position.coords.latitude);
+    // console.log('Longitude: ' + position.coords.longitude);
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     getWeather(lat, long);
@@ -156,7 +189,7 @@ function getWeather(lat, long) {
     fetch(url).then(function (response) {
         return response.json()
     }).then(function (data) {
-        console.log(data);
+        // console.log(data);
         var location = data.name;
         var high = data.main.temp_max;
         var low = data.main.temp_min;
@@ -222,7 +255,7 @@ function createEvent(event) {
 // create object to store event data and save it to local storage
 function createStorageObject(date,category,eventTxt) {
     var storedObject = JSON.parse(localStorage.getItem(date));
-    console.log('stored object: ', storedObject);
+    // console.log('stored object: ', storedObject);
 
     // set conditional to check if object exists
     if (!storedObject) {
@@ -242,7 +275,7 @@ function createStorageObject(date,category,eventTxt) {
         storedObject[category] = newArr;
         // save object to local storage
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     } else if (!storedObject[category]) {
@@ -251,16 +284,16 @@ function createStorageObject(date,category,eventTxt) {
         newArr.push(eventTxt);
         storedObject[category] = newArr;
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     } else {
         // if user wants to add another event under an existing category
         existingArr = storedObject[category];
-        console.log('existing array in local storage: ', existingArr);
+        // console.log('existing array in local storage: ', existingArr);
         existingArr.push(eventTxt);
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     }
@@ -309,7 +342,7 @@ function clearItems() {
 }
 
 function cancelEvent() {
-    console.log('event cancelled')
+    // console.log('event cancelled')
     var hidePopup = document.getElementById('addEvent');
     hidePopup.style.visibility = 'hidden';
 }
@@ -320,14 +353,18 @@ function hideForm() {
 }
 
 function init() {
-getQuote();
-    makeDays();
     getLocation();
+    getQuote();
+    makeDays();
+
+
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', clearItems);
     dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
     cancelEventEl.addEventListener('click', cancelEvent);
+    leftArrow.addEventListener('click', previousMonth);
+    rightArrow.addEventListener('click', nextMonth);
 }
 
 init();
