@@ -273,6 +273,7 @@ function displayElements(event) {
 }
 
 function displaySideBar(date) {
+    // clearItems(date);
 
     var storedObject = JSON.parse(localStorage.getItem(date));
     console.log(storedObject)
@@ -293,6 +294,18 @@ function displaySideBar(date) {
     }
 }
 
+function clearItems(event) {
+    var date = event.target.getAttribute('data-date')
+    var storedObject = JSON.parse(localStorage.getItem(date));
+    
+    for (keys in storedObject) {
+        var propertyKey = keys; //returns array
+        var del = document.getElementById(propertyKey)
+        for (var i = 0; i <del.children.length; i++) {
+            del.removeChild(del.lastChild);
+        }
+    }
+}
 
 function cancelEvent() {
     console.log('event cancelled')
@@ -310,6 +323,7 @@ function init() {
     makeDays();
     // getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
+    dayRowContainerEl.addEventListener('click', clearItems);
     dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
     cancelEventEl.addEventListener('click', cancelEvent);
