@@ -93,7 +93,8 @@ body {
 }
 
 #notes {
-    height: 77%;
+    height: 68%;
+    display: block;
 }
 
 h2 {
@@ -239,8 +240,10 @@ input[type='radio'] {
     }
 
     #notes {
-        height: 60%;
-        max-height: 400px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        height: 55%;
     }
 
     #legend {
@@ -259,7 +262,7 @@ input[type='radio'] {
     #navbar {
         width: 100%;
     }
-    
+
     #calendar-container {
         width: 100%;
         height: 70%;
@@ -285,7 +288,7 @@ input[type='radio'] {
     }
 
     #side-container {
-         width: 100%;
+        width: 100%;
     }
 
     #quote-box {
@@ -310,5 +313,8 @@ input[type='radio'] {
 @media screen and (max-width: 576px) {
     #navbar {
         width: 100%;
+        flex-wrap: nowrap;
     }
+
+
 }
