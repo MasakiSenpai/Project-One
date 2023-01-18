@@ -64,7 +64,7 @@
                 <div id="quote-box" class="p-2 text-center h-25 fs-4 text-white">
                 </div>
 
-                <div id="notes" class="d-flex flex-column flex-wrap fs-4 p-2  bg-light">
+                <div id="notes" class="d-flex flex-column flex-wrap fs-4 p-2 bg-light">
                     <!-- use id="note-items" for li elements -->
                     <ul class="list-unstyled">
                         <h2 id="birthdays">Birthdays</h2>
@@ -111,12 +111,12 @@
                         <input type="radio" id="chooseOther" name="categoryChoice" value="other">
                         <label id="otherLabel" for="chooseOther">Other</label><br>
                     </div>
-                    <div class="p-1">
+                    <div class="p-1 d-none">
                         <label for="start">Start date: </label>
                         <input type="date" id="startDate" name="eventStart" required>
                     </div>
 
-                    <div class="p-1">
+                    <div class="p-1 d-none">
                         <label for="end">End date: </label>
                         <input type="date" id="endDate" name="eventEnd"><br>
                     </div>
@@ -126,8 +126,7 @@
             </div>
         </div>
         <div id="legend" class="fs-3">
-
-            <ul class="list-unstyled d-flex justify-content-around text-white">
+            <ul class="list-unstyled d-flex flex-wrap justify-content-around text-white">
                 <li><i class="fa-solid fa-circle" id="birthdays"></i> Birthdays</li>
                 <li><i class="fa-solid fa-circle" id="holidays"></i> Holidays</li>
                 <li><i class="fa-solid fa-circle" id="personal"></i> Personal</li>
