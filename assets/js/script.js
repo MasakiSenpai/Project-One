@@ -11,12 +11,17 @@ var cancelEventEl = document.getElementById('cancelEvent');
 var eventTxtEl = document.getElementById('eventTitle');
 var radioBtnsEl = document.getElementById('formOptions');
 var notesEl = document.getElementById('notes');
+var leftArrow = document.getElementById('left-arrow');
+var rightArrow = document.getElementById('right-arrow');
+
+var monthIndex = dayjs().get('month')
+var dateObject = dayjs().set('month', monthIndex).startOf('month');
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
-var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
-var daysInPrevMonth = dayjs().startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
-var daysInNextMonth = dayjs().startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
-var nextMonthFirstDay = dayjs().startOf('month').add(1, 'month').get('d'); //returns day of week as index
+var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
+var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
+var daysInNextMonth = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
+var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
 // api call and population of html elements to display quote of the day
 function getQuote() {
@@ -38,10 +43,42 @@ function getQuote() {
         })
 }
 
+function previousMonth() {
+    monthIndex--;
+    if (monthIndex < 0) {
+        monthIndex = 11;
+    }
+
+    displayMonth();
+}
+
+function nextMonth() {
+    monthIndex++;
+    if (monthIndex > 11) {
+        monthIndex = 0;
+    }
+
+    displayMonth();
+}
+
+function displayMonth() {
+    // dipslays current month
+    currentMonth.textContent = dayjs().set('month', monthIndex).format('MMMM');
+
+    clearMonth();
+}
+
+function clearMonth() {
+    console.log(dayRowContainerEl.children)
+    while (dayRowContainerEl.hasChildNodes()) {
+        dayRowContainerEl.removeChild(dayRowContainerEl.firstChild)
+    }
+    makeDays();
+}
+
+
 // makes elements based on the number of days in the current month
 function makeDays() {
-    // dipslays current month
-    currentMonth.textContent = dayjs().format('MMMM');
 
     // make days of previous month
     for (var x = currentMonthFirstDay; x > 0; x--) {
@@ -320,14 +357,18 @@ function hideForm() {
 }
 
 function init() {
-// getQuote();
-    makeDays();
-    // getLocation();
+    getLocation();
+    getQuote();
+    displayMonth();
+    // makeDays();
+
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', clearItems);
     dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
     cancelEventEl.addEventListener('click', cancelEvent);
+    leftArrow.addEventListener('click', previousMonth);
+    rightArrow.addEventListener('click', nextMonth);
 }
 
 init();
