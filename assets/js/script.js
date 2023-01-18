@@ -273,6 +273,7 @@ function displayElements(event) {
 }
 
 function displaySideBar(date) {
+    clearItems();
 
     var storedObject = JSON.parse(localStorage.getItem(date));
     // console.log(storedObject)
@@ -293,7 +294,7 @@ function displaySideBar(date) {
     }
 }
 
-function clearItems(event) {
+function clearItems() {
     // var date = event.target.getAttribute('data-date');
     // var storedObject = JSON.parse(localStorage.getItem(date));
 
