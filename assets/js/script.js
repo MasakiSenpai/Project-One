@@ -10,6 +10,7 @@ var createEventEl = document.getElementById('createEvent');
 var cancelEventEl = document.getElementById('cancelEvent');
 var eventTxtEl = document.getElementById('eventTitle');
 var radioBtnsEl = document.getElementById('formOptions');
+var notesEl = document.getElementById('notes');
 
 var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
 var currentMonthFirstDay = dayjs().startOf('month').get('d'); //returns day of week as index
@@ -228,7 +229,14 @@ function createStorageObject(date,category,eventTxt) {
         // if object does not exist, create new object
         // create key and set value to event text
         // storedObject = {[category] : [eventTxt]}
-        storedObject = {};
+        storedObject = {
+            // birthdays: [],
+            // holdays: [],
+            // personal: [],
+            // work: [],
+            // school: [],
+            // other: []
+        };
         var newArr = [];
         newArr.push(eventTxt)
         storedObject[category] = newArr;
@@ -258,32 +266,46 @@ function createStorageObject(date,category,eventTxt) {
     }
 }
 
+function displayElements(event) {
+     // get date to pass to displaySideBar
+    var date = event.target.getAttribute('data-date')
+    displaySideBar(date);
+}
+
 function displaySideBar(date) {
+    clearItems();
+
     var storedObject = JSON.parse(localStorage.getItem(date));
+    // console.log(storedObject)
     
     for (keys in storedObject) {
-        console.log('key: ', keys)
-        var propertyValues = storedObject[keys]
-        console.log(propertyValues);
-        var key = keys.toString();
-        console.log('key string: ', key);
+        var propertyValues = storedObject[keys]; //returns array
+        // console.log('key: ', keys)
+        // console.log('value ', propertyValues);
 
         for (var i = 0; i < propertyValues.length; i++) {
-
+            var category = document.getElementById(keys + '-list');
             var liEl = document.createElement('li');
+
             liEl.setAttribute('id', 'note-items');
             liEl.textContent = propertyValues[i];
-
-            var category = document.getElementById([key]);
-            // category.removeChild(li)
             category.appendChild(liEl);
         }
     }
 }
 
-function displayElements(event) {
-    var date = event.target.getAttribute('data-date')
-    displaySideBar(date);
+function clearItems() {
+    // var date = event.target.getAttribute('data-date');
+    // var storedObject = JSON.parse(localStorage.getItem(date));
+
+    var catArray = ['birthdays-list', 'holidays-list', 'personal-list', 'work-list', 'school-list', 'other-list']
+    
+    for (i of catArray) {
+        var del = document.getElementById(i)
+        while (del.hasChildNodes()) {
+            del.removeChild(del.firstChild);
+        }
+    }
 }
 
 function cancelEvent() {
@@ -302,6 +324,7 @@ function init() {
     makeDays();
     // getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
+    dayRowContainerEl.addEventListener('click', clearItems);
     dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
     cancelEventEl.addEventListener('click', cancelEvent);
