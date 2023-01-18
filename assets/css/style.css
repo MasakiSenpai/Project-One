@@ -67,6 +67,20 @@ body {
     height: 100%;
 }
 
+#sticky-note {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 5%;
+    justify-content: end;
+    align-items: end;
+    color: var(--maybe)
+}
+
+#sticky-note:hover {
+    color: var(--maybe2)
+}
+
 #side-container {
     margin-left: 3%;
 }
