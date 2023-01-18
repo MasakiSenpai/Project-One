@@ -229,7 +229,14 @@ function createStorageObject(date,category,eventTxt) {
         // if object does not exist, create new object
         // create key and set value to event text
         // storedObject = {[category] : [eventTxt]}
-        storedObject = {};
+        storedObject = {
+            // birthdays: [],
+            // holdays: [],
+            // personal: [],
+            // work: [],
+            // school: [],
+            // other: []
+        };
         var newArr = [];
         newArr.push(eventTxt)
         storedObject[category] = newArr;
@@ -260,40 +267,24 @@ function createStorageObject(date,category,eventTxt) {
 }
 
 function displayElements(event) {
+     // get date to pass to displaySideBar
     var date = event.target.getAttribute('data-date')
     displaySideBar(date);
 }
 
 function displaySideBar(date) {
-    // clear items
-    // for (var i = 0; i < notesEl.children.length; i++) {
-    //     console.log(notesEl.children[i].children);
-    //     notesEl.children[i].getElementsByTagName('div').remove;
-    // }
 
     var storedObject = JSON.parse(localStorage.getItem(date));
     console.log(storedObject)
-
-    var noteItems = document.getElementById('note-items');
-
-    if (!storedObject) {
-        noteItems.remove
-    }
     
     for (keys in storedObject) {
-        var propertyValues = storedObject[keys]
+        var propertyValues = storedObject[keys]; //returns array
         console.log('key: ', keys)
         console.log('value ', propertyValues);
-        
-        if (noteItems) {
-            noteItems.remove();
-        }
 
         for (var i = 0; i < propertyValues.length; i++) {
-
             var category = document.getElementById(keys);
             var liEl = document.createElement('li');
-            console.log(category.children);
 
             liEl.setAttribute('id', 'note-items');
             liEl.textContent = propertyValues[i];
