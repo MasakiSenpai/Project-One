@@ -74,6 +74,7 @@ body {
 #quote-box {
     font-family: var(--Athiti);
     margin-top: 40px;
+    font-size:x-large;
 }
 
 #notes {
@@ -216,21 +217,27 @@ input[type='radio'] {
     #side-container {
         width: 100%;
         margin: 0%;
+    }
 
+    #quote-box {
+        margin-top: 20PX;
+        font-size: large;
     }
 
     #notes {
         height: 60%;
+        max-height: 400px;
     }
 
     #legend {
-        margin-top: 55px;
+        margin-top: 5%;
         /* width: 100%; */
 
     }
 
     #legend li {
-        padding: 5%;
+        padding: 3%;
+        font-size: large;
     }
 
 }
@@ -271,18 +278,22 @@ input[type='radio'] {
 
     #quote-box {
         margin: 0;
+        font-size: medium;
     }
 
     #legend {
-        /* width: 100%; */
-        margin-top: 180px;
+        margin-top: 150px;
         display: flex;
         justify-content: space-around;
         padding: 2%;
     }
 
     #legend li {
-        padding: 5%;
+        padding: 3%;
+    }
+
+    #legend {
+        /* display: none; */
     }
 }
 
