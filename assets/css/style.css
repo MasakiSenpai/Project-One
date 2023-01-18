@@ -188,18 +188,22 @@ input[type='radio'] {
     }
 
     #calendar-container {
-        width: 94%;
+        width: 90%;
         height: 50%;
     }
 
     #side-container {
-        width: 94%;
+        width: 90%;
     }
 
     #notes {
         height: 50%;
     }
 
+    #legend {
+        width: 90%;
+        display: inline;
+    }
 
 }
 
