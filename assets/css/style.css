@@ -20,6 +20,10 @@ body {
     background-color: var(--dark);
 }
 
+#calendar-container {
+    margin-left: 2%;
+}
+
 #hungry {
     background-color: var(--maybe2);
     /* background-color: #ea8a8a; */
@@ -63,8 +67,17 @@ body {
     height: 100%;
 }
 
+#side-container {
+    margin-left: 3%;
+}
+
 #quote-box {
     font-family: var(--Athiti);
+    margin-top: 40px;
+}
+
+#notes {
+    height: 730px;
 }
 
 h2 {
@@ -79,6 +92,7 @@ h2 {
 
 #legend {
     font-family: var(--Athiti);
+    margin-top: 20px;
 }
 
 #holidays {
@@ -188,24 +202,26 @@ input[type='radio'] {
     }
 
     #calendar-container {
-        width: 90%;
+        width: 100%;
         height: 50%;
+        margin: 0%;
     }
 
     #side-container {
-        width: 90%;
+        width: 100%;
+        margin: 0%;
 
     }
 
     #notes {
-        height: 50%;
+        height: 60%;
     }
 
     #legend {
-        margin: 0;
+        margin-top: 55px;
         display: block;
         justify-content: center;
-        width: 90%;
+        width: 100%;
 
     }
 

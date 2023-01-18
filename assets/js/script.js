@@ -298,9 +298,9 @@ function hideForm() {
 }
 
 function init() {
-// getQuote();
+getQuote();
     makeDays();
-    // getLocation();
+    getLocation();
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', displayElements);
     createEventEl.addEventListener('click', createEvent);
