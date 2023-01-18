@@ -355,8 +355,8 @@ function hideForm() {
 function init() {
     getLocation();
     getQuote();
-    // displayMonth();
     makeDays();
+
 
     dayRowContainerEl.addEventListener('dblclick', addEventPopup);
     dayRowContainerEl.addEventListener('click', clearItems);
