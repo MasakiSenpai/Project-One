@@ -74,11 +74,12 @@ body {
 #quote-box {
     font-family: var(--Athiti);
     margin-top: 40px;
-    font-size:x-large;
+    max-height: 200px;
+    font-size: x-large;
 }
 
 #notes {
-    height: 730px;
+    height: 77%;
 }
 
 h2 {
@@ -127,7 +128,6 @@ h2 {
     margin-top: 160px;
     margin-left: 18%;
     padding: 1%;
-    /* margin: 60px; */
     width: 25%;
 }
 
@@ -231,8 +231,6 @@ input[type='radio'] {
 
     #legend {
         margin-top: 5%;
-        /* width: 100%; */
-
     }
 
     #legend li {
