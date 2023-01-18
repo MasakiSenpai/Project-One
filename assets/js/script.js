@@ -273,18 +273,17 @@ function displayElements(event) {
 }
 
 function displaySideBar(date) {
-    // clearItems(date);
 
     var storedObject = JSON.parse(localStorage.getItem(date));
-    console.log(storedObject)
+    // console.log(storedObject)
     
     for (keys in storedObject) {
         var propertyValues = storedObject[keys]; //returns array
-        console.log('key: ', keys)
-        console.log('value ', propertyValues);
+        // console.log('key: ', keys)
+        // console.log('value ', propertyValues);
 
         for (var i = 0; i < propertyValues.length; i++) {
-            var category = document.getElementById(keys);
+            var category = document.getElementById(keys + '-list');
             var liEl = document.createElement('li');
 
             liEl.setAttribute('id', 'note-items');
@@ -295,14 +294,15 @@ function displaySideBar(date) {
 }
 
 function clearItems(event) {
-    var date = event.target.getAttribute('data-date')
-    var storedObject = JSON.parse(localStorage.getItem(date));
+    // var date = event.target.getAttribute('data-date');
+    // var storedObject = JSON.parse(localStorage.getItem(date));
+
+    var catArray = ['birthdays-list', 'holidays-list', 'personal-list', 'work-list', 'school-list', 'other-list']
     
-    for (keys in storedObject) {
-        var propertyKey = keys; //returns array
-        var del = document.getElementById(propertyKey)
-        for (var i = 0; i <del.children.length; i++) {
-            del.removeChild(del.lastChild);
+    for (i of catArray) {
+        var del = document.getElementById(i)
+        while (del.hasChildNodes()) {
+            del.removeChild(del.firstChild);
         }
     }
 }
