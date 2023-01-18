@@ -74,11 +74,16 @@ body {
 #quote-box {
     font-family: var(--Athiti);
     margin-top: 40px;
-    font-size:x-large;
+    /* height: 25%; */
+    max-height: 200px;
+    font-size: x-large;
 }
 
 #notes {
-    height: 730px;
+    /* height: 730px; */
+    height: 77%;
+    /* margin-bottom: 3%; */
+    /* max-height: 730px; */
 }
 
 h2 {
