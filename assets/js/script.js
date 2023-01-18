@@ -16,11 +16,6 @@ var rightArrow = document.getElementById('right-arrow');
 
 var monthIndex = dayjs().get('month')
 
-// var daysInCurrentMonth = dayjs().daysInMonth(); //returns number of days in current month
-// var currentMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').get('d'); //returns day of week as index
-// var daysInPrevMonth = dayjs().set('month', monthIndex).startOf('month').subtract(1, 'month').daysInMonth(); // returns number of days in previous month
-// var daysInNextMonth = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').daysInMonth(); // returns number of days in next month
-// var nextMonthFirstDay = dayjs().set('month', monthIndex).startOf('month').add(1, 'month').get('d'); //returns day of week as index
 
 // api call and population of html elements to display quote of the day
 function getQuote() {
@@ -28,7 +23,6 @@ function getQuote() {
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
             var author = data.author;
             var quote = data.quote;
             var authorEl = document.createElement('p');
@@ -117,8 +111,6 @@ function makeDays() {
         // Checks for todays date and adds an id to change color
         // var today = dayjs().format('2023-01-02');
         var today = dayjs().format('YYYY-MM-DD');
-        console.log(today);
-        console.log(date);
         if (today === date) {
             // console.log('yes')
             pTag.setAttribute('id', 'currentDay');
@@ -163,7 +155,7 @@ function getDefault() {
         return response.json()
 
     }).then(function (data) {
-        console.log(data);
+        // console.log(data);
         var location = data.name;
         var high = data.main.temp_max;
         var low = data.main.temp_min;
@@ -182,8 +174,8 @@ function getDefault() {
 
 // function defines variables with latitude and longitude as their values
 function getCoordinates(position) {
-    console.log('Latitude: ' + position.coords.latitude);
-    console.log('Longitude: ' + position.coords.longitude);
+    // console.log('Latitude: ' + position.coords.latitude);
+    // console.log('Longitude: ' + position.coords.longitude);
     var lat = position.coords.latitude;
     var long = position.coords.longitude;
     getWeather(lat, long);
@@ -197,7 +189,7 @@ function getWeather(lat, long) {
     fetch(url).then(function (response) {
         return response.json()
     }).then(function (data) {
-        console.log(data);
+        // console.log(data);
         var location = data.name;
         var high = data.main.temp_max;
         var low = data.main.temp_min;
@@ -219,7 +211,7 @@ function getWeather(lat, long) {
 function addEventPopup(event) {
     // gets data-date attribute from target element
     var date = event.target.getAttribute('data-date');
-    console.log(date);
+    // console.log(date);
 
     // sets date as the event start date element value
     document.getElementById('startDate').removeAttribute('value');
@@ -263,7 +255,7 @@ function createEvent(event) {
 // create object to store event data and save it to local storage
 function createStorageObject(date,category,eventTxt) {
     var storedObject = JSON.parse(localStorage.getItem(date));
-    console.log('stored object: ', storedObject);
+    // console.log('stored object: ', storedObject);
 
     // set conditional to check if object exists
     if (!storedObject) {
@@ -283,7 +275,7 @@ function createStorageObject(date,category,eventTxt) {
         storedObject[category] = newArr;
         // save object to local storage
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     } else if (!storedObject[category]) {
@@ -292,16 +284,16 @@ function createStorageObject(date,category,eventTxt) {
         newArr.push(eventTxt);
         storedObject[category] = newArr;
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     } else {
         // if user wants to add another event under an existing category
         existingArr = storedObject[category];
-        console.log('existing array in local storage: ', existingArr);
+        // console.log('existing array in local storage: ', existingArr);
         existingArr.push(eventTxt);
         localStorage.setItem(date, JSON.stringify(storedObject));
-        console.log(JSON.parse(localStorage.getItem(date)));
+        // console.log(JSON.parse(localStorage.getItem(date)));
 
         displaySideBar(date);
     }
@@ -350,7 +342,7 @@ function clearItems() {
 }
 
 function cancelEvent() {
-    console.log('event cancelled')
+    // console.log('event cancelled')
     var hidePopup = document.getElementById('addEvent');
     hidePopup.style.visibility = 'hidden';
 }
